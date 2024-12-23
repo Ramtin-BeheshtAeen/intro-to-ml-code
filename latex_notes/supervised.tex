@@ -109,7 +109,8 @@
     \begin{minipage}{\linewidth}
     \textbf{#1}:
 }{
-    \end{minipage}\\[2ex]
+    % changing vertical  space between every cheat formula
+    \end{minipage}\\[0ex]
 }
 
 \newcommand{\cheatimage}[4][\imagewidth]{
@@ -122,8 +123,8 @@
 }
 
 \newcommand*{\NameAndID}{%
-    \par\noindent\makebox[2.5in]{\hrulefill} \hspace{0.5in}\makebox[2.0in]{\hrulefill}%
-    \par\noindent\makebox[2.5in][r]{Ramtin Behesht Aeen}      \hspace{0.5in}\makebox[2.0in][r]{ramtinba145822@gmail.com}%
+    \par\noindent\makebox[2in]{\hrulefill} \hspace{0.5in}\makebox[2.0in]{\hrulefill}%
+    \par\noindent\makebox[2in][r]{Ramtin Behesht Aeen}      \hspace{0.5in}\makebox[2.0in][r]{ramtinba145822@gmail.com}%
 }%
 
 \title{Summary of }
@@ -137,7 +138,7 @@
 \makeatletter
 \begin{center}
     {\NameAndID}\\[2ex]
-    {\huge{\textbf{\@title}}}\\[2ex]
+    {\Large{\textbf{\@title}}}\\[2ex]
 \end{center}
 \makeatother
 
