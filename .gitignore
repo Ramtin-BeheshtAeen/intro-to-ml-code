@@ -1,0 +1,40 @@
+# LaTeX auxiliary files
+*.aux
+*.bbl
+*.blg
+*.log
+*.out
+*.toc
+*.lot
+*.lof
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.pdfsync
+*.ent
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.dvi
+*.ps
+
+# Editor-specific files
+*.swp
+*.swo
+*.DS_Store
+*.vscode/
+*.idea/
+*.latexmkrc
+
+# Output files
+*.pdf
+*.eps
+*.jpg
+*.png
+*.gif
+
+# Ignore specific directories
+build/
+output/
