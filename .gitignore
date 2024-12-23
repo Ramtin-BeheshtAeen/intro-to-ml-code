@@ -28,8 +28,7 @@
 *.idea/
 *.latexmkrc
 
-# Output files
-*.pdf
+# Output filesadd
 *.eps
 *.jpg
 *.png
