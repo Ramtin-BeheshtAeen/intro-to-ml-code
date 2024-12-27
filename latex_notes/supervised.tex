@@ -151,37 +151,58 @@
 
 \begin{itemize}
   \item[$\circ$] Linear Regression Hypothesis:
-  $$ \mathbf{h_{w}X} = w_{0} + w_{1} x_{1} + ... + w_{D}x_{D} := \mathbf{W^{T}X}$$
+  \begin{equation}
+  \mathbf{h_{w}X} = w_{0} + w_{1} x_{1} + ... + w_{D}x_{D} := \mathbf{W^{T}X}
+  \end{equation}
   \item[$\circ$] Input Vector X :
-  $$ X= [x_{0}=1, \, x_{1}, \, x_{2}, \, ... \, ,x_{D}] $$
+  \begin{equation}
+  X= [x_{0}=1, \, x_{1}, \, x_{2}, \, ... \, ,x_{D}]
+  \end{equation}
   \item[$\circ$] Parameter Vector W (features) :
-  $$ W= [w_{0}=1, \, w_{1}, \, w_{2}, \, ... \, ,w_{D}] $$
+  \begin{equation}
+  W= [w_{0}=1, \, w_{1}, \, w_{2}, \, ... \, ,w_{D}]
+  \end{equation}
 \end{itemize}
 \end{cheatformula}
 
 \begin{cheatformula}[Squared Error(SE)] 
 Most Common error function in linear regression is:
-$$SE: ( y^{(i)} - h(x^{(i)}, w))^{2}$$
+\begin{equation}
+SE: ( y^{(i)} - h(x^{(i)}, w))^{2}
+\end{equation}
 \end{cheatformula}
+
 
 
 \begin{cheatformula}[Sum of Squared Errors (SSE)]
 Cost function should measure all predictions. Thus a choice could be Sum of Squared Error(SE)
-$$ SSE: \sum_{i=1}^{N}(y^{(i)} - h(x^{(i)}, w) ) $$
+\begin{equation}
+SSE: \sum_{i=1}^{N}(y^{(i)} - h(x^{(i)}, w) )
+\end{equation}
 \end{cheatformula}
 
 \begin{cheatformula}[Solve it analytically for one dimension]
 Predicted:
-$$  \widehat{y} = w_{0} + w_{1}x $$
+\begin{equation}
+\widehat{y} = w_{0} + w_{1}x
+\end{equation}
 SSE or Cost Function:
-$$ J(w_{0}, w_{1}) := \sum_{i=1}^{N}(y^{(i)} - \widehat{y}^{(i)})^{2} = \sum_{i=1}^{N}(y^{(i)} -  w_{0} + w_{1}x^{(i)})^{2} $$
+\begin{equation}
+J(w_{0}, w_{1}) := \sum_{i=1}^{N}(y^{(i)} - \widehat{y}^{(i)})^{2} = \sum_{i=1}^{N}(y^{(i)} -  w_{0} + w_{1}x^{(i)})^{2}
+\end{equation}
 Assumptions:
-$$\frac{\partial J}{\partial w_{0}} = 0 \,, \frac{\partial J}{\partial w_{1}} = 0$$
+\begin{equation}
+\frac{\partial J}{\partial w_{0}} = 0 \,, \frac{\partial J}{\partial w_{1}} = 0
+\end{equation}
 $\frac{\partial J}{\partial w_{0}} = 0:$ thus:
- $$ \frac{\partial }{\partial w_{0}}  ( \sum_{i=1}^{N}(y^{(i)} -  (w_{0} + w_{1}x^{(i)}))^{2}) = 0  \, \footnotemark $$
+\begin{equation}
+\frac{\partial }{\partial w_{0}}  ( \sum_{i=1}^{N}(y^{(i)} -  (w_{0} + w_{1}x^{(i)}))^{2}) = 0  \, \footnotemark
+\end{equation}
 
- $$ -2 \sum_{i=1}^{N}(y^{(i)} -  w_{0} - w_{1}x^{(i)}) = 0 $$
- \footnotetext{\textsuperscript{\thefootnote} $fog(x)' = f(g(x))' g(x)'$}
+\begin{equation}
+-2 \sum_{i=1}^{N}(y^{(i)} -  w_{0} - w_{1}x^{(i)}) = 0
+\end{equation}
+\footnotetext{\textsuperscript{\thefootnote} $fog(x)' = f(g(x))' g(x)'$}
 
 For this equation to equal zero, the following condition must be met:
 \begin{itemize}
@@ -190,29 +211,47 @@ For this equation to equal zero, the following condition must be met:
 \item[$\circ$] $\sum_{i=1}^{N}-w_{1}x^{(i)}  = 0 := X $ 
 \end{itemize}
 Thus:
-$$ 0 = Y - n w_{0} -w_{1}x^{(i)} \longrightarrow  w_{0} = \frac{(Y -w_{1}x^{(i)})}{n} $$
+\begin{equation}
+0 = Y - n w_{0} -w_{1}x^{(i)} \longrightarrow  w_{0} = \frac{(Y -w_{1}x^{(i)})}{n}
+\end{equation}
 \end{cheatformula}
 
 
 \begin{cheatformula}[Second Part $\frac{\partial J}{\partial w_{1}} = 0$ ]\\
 
-$$ \frac{\partial }{\partial w_{1}}  ( \sum_{i=1}^{N}(y^{(i)} -  (w_{0} + w_{1}x^{(i)}))^{2}) = 0   $$
+\begin{equation}
+\frac{\partial }{\partial w_{1}}  ( \sum_{i=1}^{N}(y^{(i)} -  (w_{0} + w_{1}x^{(i)}))^{2}) = 0
+\end{equation}
 
-$$  \sum_{i=1}^{N} 2(y^{(i)} -  (w_{0} + w_{1}x^{(i)})) x^{(i)} = 0  \, \footnotemark $$
+\begin{equation}
+\sum_{i=1}^{N} 2(y^{(i)} -  (w_{0} + w_{1}x^{(i)})) x^{(i)} = 0  \, \footnotemark
+\end{equation}
 
-$$  \sum_{i=1}^{N} (x^{(i)}y^{(i)} - w_{0}x^{(i)} + w_{1}x^{(i)^{2}} = 0 $$
+\begin{equation}
+\sum_{i=1}^{N} (x^{(i)}y^{(i)} - w_{0}x^{(i)} + w_{1}x^{(i)^{2}} = 0
+\end{equation}
 
 $ \sum_{i=1}^{N} (x^{(i)})=X   ,\,  w_{0} = \frac{(Y -w_{1}x^{(i)})}{n} \, so: $
 
-$$  \sum_{i=1}^{N} (x^{(i)}y^{(i)} - \frac{(Y -w_{1}x^{(i)})}{n} X  + w_{1}x^{(i)^{2}} = 0 $$
+\begin{equation}
+\sum_{i=1}^{N} (x^{(i)}y^{(i)} - \frac{(Y -w_{1}x^{(i)})}{n} X  + w_{1}x^{(i)^{2}} = 0
+\end{equation}
 
-$$  n \sum_{i=1}^{N} x^{(i)}y^{(i)} - {(YX -w_{1}X^{2})}   + n\sum_{i=1}^{N}w_{1}x^{(i)^{2}} = 0 $$
+\begin{equation}
+n \sum_{i=1}^{N} x^{(i)}y^{(i)} - {(YX -w_{1}X^{2})}   + n\sum_{i=1}^{N}w_{1}x^{(i)^{2}} = 0
+\end{equation}
 
-$$  n \sum_{i=1}^{N} x^{(i)}y^{(i)} - YX=  - w_{1}X^{2}   + n w_{1}\sum_{i=1}^{N}x^{(i)^{2}}  $$
+\begin{equation}
+n \sum_{i=1}^{N} x^{(i)}y^{(i)} - YX=  - w_{1}X^{2}   + n w_{1}\sum_{i=1}^{N}x^{(i)^{2}}
+\end{equation}
 
-$$n \sum_{i=1}^{N} x^{(i)}y^{(i)} - YX = w_{1} (n \sum_{i=1}^{N}x^{(i)^{2}} - X^{2})$$
+\begin{equation}
+n \sum_{i=1}^{N} x^{(i)}y^{(i)} - YX = w_{1} (n \sum_{i=1}^{N}x^{(i)^{2}} - X^{2})
+\end{equation}
 
-$$w_{1} = \frac{n \sum_{i=1}^{N} x^{(i)}y^{(i)} - YX}{n \sum_{i=1}^{N}x^{(i)^{2}} - X^{2}}$$
+\begin{equation}
+w_{1} = \frac{n \sum_{i=1}^{N} x^{(i)}y^{(i)} - YX}{n \sum_{i=1}^{N}x^{(i)^{2}} - X^{2}}
+\end{equation}
 
  \footnotetext{\textsuperscript{\thefootnote} $ \frac{\partial}  {\partial x} xy =y \frac{\partial}  {\partial x}x =y $}
  
@@ -225,9 +264,11 @@ $$w_{1} = \frac{n \sum_{i=1}^{N} x^{(i)}y^{(i)} - YX}{n \sum_{i=1}^{N}x^{(i)^{2}
 \begin{cheatformula}[Analytical Solution for D Dimensions:]\
 In this section, the solution for D dimensions is discussed. For example, in apartment price prediction, we cannot only consider the size, but also other features like the year it was built, the number of rooms, and other property characteristics. Therefore, our x vector will contain multiple properties.
 
-$$x ^{(1)}= \begin{pmatrix}
+\begin{equation}
+x ^{(1)}= \begin{pmatrix}
  1\\ 3 \\1390 \\80
-\end{pmatrix}$$
+\end{pmatrix}
+\end{equation}
 
 For example in this three dimension, here 1 represents the intercept, 3 is the number of rooms, 1390 is the year it was built, and 80 indicates the size.
 
@@ -236,8 +277,6 @@ original Formula is: $  \widehat{y} = w_{0} + w_{1}x$  but in D dimension will b
 % % Matrix with name, line, and text below the line
 % $$\text{Let } x^{(1)} = \underline{ \begin{pmatrix}  1 \\  3 \\  1390 \\  80 \end{pmatrix}}  \quad \raisebox{-10ex}{\hspace{-2cm} \text{Explanation}} % Move left by 2cm$$
 
-
-$$
 \underbrace{ 
 \begin{bmatrix}
  1 & 3 & 1390 & 80 \\
@@ -261,93 +300,102 @@ y_{1}  \\
 y_{D}
 \end{bmatrix} 
 }_{y}  
-$$
-% % Matrix with a curved line and explanation
-% $$\text{Let } x^{(1)} =  
-% \begin{tikzpicture}[baseline=(current bounding box.south)]
-% \node (m) at (0,0) {
-% \begin{pmatrix} 
-% 1 \\   3 \\     1390 \\     80   
-% \end{pmatrix}   };  
-% \draw[thick] (m.south west)..controls +(down:5mm) and +(down:5mm) .. (m.south east);
-% \end{tikzpicture}
-% \quad \raisebox{-1.5ex}{\hspace{-1.5cm} \text{Explanation}}
-% $$
+
+\begin{equation}
+y_{1} = w_{0}\underbrace{X_{10}}_{\text{row1 column1}} + w_{1}\underbrace{X_{11}}_{\text{row1 column2}} + ... + w_{D}X_{1D}
+\end{equation}
+so: 
+\begin{equation}
+\widehat{y} = X w
+\end{equation}
+our goal is to minimize the cost function( make $\widehat{y}$ as close as possible to y):
+first for multiply this 2 vectors we should transpose one of them:
+\begin{equation}
+J(w) =  (y^{(i)} -  \widehat{y}^{(i)})^{2} = \underbrace{(y^{(i)} - \widehat{y}^{(i)})^{T}}_{1*n} \underbrace{(y^{(i)} - \widehat{y}^{(i)})}_{n*1}
+\end{equation}
+based on this rule \footnotetext{\textsuperscript{\thefootnote} $(AB)^{T} = A^{T}B^{T}$}we have:
+\begin{equation}
+J(w) = (y - Xw)^{T}(y - Xw)
+\end{equation}
+this equal to
+\begin{equation}
+J(w) = y^{T}y - y^{T}Xw - w^{T}X^{T}y + w^{T}X^{T}Xw
+\end{equation}
+\begin{equation}
+J(w) = y^{T}y - 2y^{T}Xw + w^{T}X^{T}Xw
+\label{eq:cost_function}
+\end{equation}
+differentiate this equation \eqref{cost_function} with respect to $w$ and set it to zero:
+$$  $$
+
 
 \end{cheatformula}
 
 \pagebreak
-\section{Perceptron}
-A perceptron is a type of artificial neuron that serves as a fundamental building block for more complex neural networks. It is primarily used for binary classification tasks in linear classification problems. Here’s a breakdown of how a perceptron works in the context of linear classification:
+
+\section{Perceptron}[A perceptron is a type of artificial neuron that serves
+ as a fundamental building block for more complex neural
+  networks. It is primarily used for binary classification
+   tasks in linear classification problems. 
+   Here’s a breakdown of how a perceptron works in the
+    context of linear classification:]
 
 \begin{cheatformula}[1. Structure of a Perceptron]
-A perceptron consists of:
-- **Inputs**: Features of the data (e.g., $x_1, x_2, \ldots, x_n$).
-- **Weights**: Each input is associated with a weight ($w_1, w_2, \ldots, w_n$).
-- **Bias**: A bias term ($b$) that allows the model to fit the data better.
-- **Activation Function**: A function that determines the output of the perceptron based on the weighted sum of the inputs.
-\end{cheatformula}
+  A perceptron consists of:
+  - \textbf{Inputs}: Features of the data (e.g., $x_1, x_2, \ldots, x_n$).
+  - \textbf{Weights}: Each input is associated with a weight ($w_1, w_2, \ldots, w_n$).
+  - \textbf{Bias}: A bias term ($b$) that allows the model to fit the data better.
+  - \textbf{Activation Function}: A function that determines the output of the perceptron based on the weighted sum of the inputs.
+  \end{cheatformula}
 
 \begin{cheatformula}[2. Mathematical Representation]
 The output of a perceptron can be represented mathematically as follows:
 
-1. **Weighted Sum**:
-   $$
+1. \textbf{Weighted Sum}:
+   \begin{equation}
    z = w_1x_1 + w_2x_2 + \ldots + w_nx_n + b
-   $$
+   \end{equation}
    where $z$ is the weighted sum of the inputs.
 
-2. **Activation Function**:
+2. \textbf{Activation Function}:
    The perceptron uses a step function (or Heaviside function) as the activation function:
-   $$
-   output = 
+   \begin{equation}
+   \text{output} = 
    \begin{cases} 
-   1 & if  z \geq 0 \\
-   0 & if  z < 0 
+   1 & \text{if } z \geq 0 \\
+   0 & \text{if } z < 0 
    \end{cases}
-   $$
+   \end{equation}
    This means that if the weighted sum $z$ is greater than or equal to zero, the perceptron outputs 1 (indicating one class), and if it is less than zero, it outputs 0 (indicating the other class).
 \end{cheatformula}
 
-
 \begin{cheatformula}[3. Training the Perceptron]
-The perceptron is trained using a supervised learning algorithm. The training process involves the following steps:
 
-1. **Initialization**: Start with random weights and bias.
+\begin{equation}
+w_i \leftarrow w_i + \eta (y - \hat{y}) x_i
+\end{equation}
 
-2. **Forward Pass**: For each training example, compute the output using the current weights and bias.
+\begin{equation}
+b \leftarrow b + \eta (y - \hat{y})
+\end{equation}
 
-3. **Update Weights**: If the output is incorrect (i.e., does not match the true label), update the weights and bias using the following rule:
-   $$
-   w_i \leftarrow w_i + \eta (y - \hat{y}) x_i
-   $$
-   $$
-   b \leftarrow b + \eta (y - \hat{y})
-   $$
-   where:
-   - $y$ is the true label (0 or 1).
-   - $\hat{y}$ is the predicted output (0 or 1).
-   - $\eta$ is the learning rate, a small positive value that controls how much the weights are adjusted.
-
-4. **Repeat**: Continue the process for a specified number of epochs or until the weights converge (i.e., the output stabilizes).
 \end{cheatformula}
 
 \begin{cheatformula}[4. Linear Classification]
-The perceptron is a linear classifier, meaning it attempts to find a linear decision boundary that separates the two classes in the feature space. The decision boundary is defined by the equation:
-$$
+
+\begin{equation}
 w_1x_1 + w_2x_2 + \ldots + w_nx_n + b = 0
-$$
-In a two-dimensional space, this represents a line, while in higher dimensions, it represents a hyperplane.
+\end{equation}
+
 \end{cheatformula}
 
 \begin{cheatformula}[5. Limitations]
 
-- **Linearly Separable Data**: The perceptron can only classify data that is linearly separable. If the data cannot be separated by a straight line (or hyperplane), the perceptron will not converge to a solution.
-- **Single Layer**: A single perceptron cannot solve problems like XOR, which are not linearly separable. However, multiple perceptrons can be combined into multi-layer networks (neural networks) to handle more complex problems.
+- \textbf{Linearly Separable Data}: The perceptron can only classify data that is linearly separable. If the data cannot be separated by a straight line (or hyperplane), the perceptron will not converge to a solution.
+- \textbf{Single Layer}: A single perceptron cannot solve problems like XOR, which are not linearly separable. However, multiple perceptrons can be combined into multi-layer networks (neural networks) to handle more complex problems.
 \end{cheatformula}
-
-
 
 \end{multicols*}
 \newpage
+
 \end{document}
