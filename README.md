@@ -17,7 +17,7 @@ The `introduction_to_machine_learning/` directory contains the following Jupyter
 - `session-3-polynomial-regression.ipynb`: Covers polynomial regression.
 - `session-4-Linear Classification and Perceptron Neural Network.ipynb`: Covers linear classification and perceptron neural networks.
 - `session-5-Logistic_Regression.ipynb`: Covers logistic regression.
-- `session-6-KNN.ipynb`: Covers logistic regression.
+- `session-6-KNN.ipynb`: Covers kNN.
 
 ### LaTeX Notes
 
