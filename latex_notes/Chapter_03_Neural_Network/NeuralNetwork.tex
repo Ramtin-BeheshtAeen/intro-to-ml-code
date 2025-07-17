@@ -1,0 +1,267 @@
+\documentclass{article}
+\usepackage[a4paper, top=2cm,right=1cm,left=1cm,bottom=0.5cm]{geometry}
+\usepackage{url}
+
+\usepackage{ifthen}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{tikz} 
+
+\usepackage{multicol}
+\usepackage[compact]{titlesec}
+
+\usepackage{mathtools}
+\usepackage{siunitx}
+\sisetup{inter-unit-product=\ensuremath{{}\cdot{}}, exponent-product = \cdot}
+\DeclareSIUnit\bar{bar}
+
+\usepackage[version=4]{mhchem} 
+
+\makeatletter
+\newsavebox\myboxA
+\newsavebox\myboxB
+\newlength\mylenA
+\newcommand*\overbar[2][0.75]{%
+    \sbox{\myboxA}{$\m@th#2$}%
+    \setbox\myboxB\null% Phantom box
+    \ht\myboxB=\ht\myboxA%
+    \dp\myboxB=\dp\myboxA%
+    \wd\myboxB=#1\wd\myboxA% Scale phantom
+    \sbox\myboxB{$\m@th\overline{\copy\myboxB}$}%  Overlined phantom
+    \setlength\mylenA{\the\wd\myboxA}%   calc width diff
+    \addtolength\mylenA{-\the\wd\myboxB}%
+    \ifdim\wd\myboxB<\wd\myboxA%
+       \rlap{\hskip 0.5\mylenA\usebox\myboxB}{\usebox\myboxA}%
+    \else
+        \hskip -0.5\mylenA\rlap{\usebox\myboxA}{\hskip 0.5\mylenA\usebox\myboxB}%
+    \fi}
+\makeatother
+\renewcommand{\arraystretch}{1.2}
+
+\makeatletter
+\renewcommand*\env@matrix[1][\arraystretch]{%
+  \edef\arraystretch{#1}%
+  \hskip -\arraycolsep
+  \let\@ifnextchar\new@ifnextchar
+  \array{*\c@MaxMatrixCols c}}
+\makeatother
+
+\usepackage{esint}
+\usepackage{setspace}
+\usepackage{colortbl}
+\usepackage{xcolor}
+\usepackage{enumitem}
+
+\usepackage{float}
+\usepackage{fancyhdr}
+\usepackage{lastpage,refcount, atbegshi}
+\usepackage[hidelinks]{hyperref}
+\AtBeginShipout{%
+  \ifnum\value{page}=\number\numexpr\getpagerefnumber{LastPage}-2\relax
+    \phantomsection\label{preLastPage}
+  \fi}
+
+% \usepackage{polyglossia}
+
+% \setmainfont{David CLM}
+% \setsansfont{Miriam CLM}
+
+% \setdefaultlanguage{english}
+% \setotherlanguage{english}  
+
+% \setmathrm{TeX Gyre Schola}
+
+\makeatletter
+\def\xpg@set@normalfont#1{%
+  \letcs{\rmfamily}{#1@font@rm}%
+  \letcs{\sffamily}{#1@font@sf}%
+  \letcs{\ttfamily}{#1@font@tt}%
+  \def\normalfont{\protect\xpg@select@fontfamily{#1}}%def instead of gdef
+  \gdef\reset@font{\protect\normalfont}%
+}
+% \addto\inlineextras@english{\xpg@set@normalfont{english}}
+% \addto\blockextras@english{\xpg@set@normalfont{english}}
+\makeatother
+
+\usepackage[style=english]{csquotes}
+
+\usepackage[continuous]{pagenote}
+\renewcommand*{\notesname}{NOTE NAME}
+\renewcommand{\sectionname}{SECTION NAME}
+\renewcommand{\notenuminnotes}[1]{{\textnormal#1. }}
+\makepagenote
+
+\renewcommand\text[1]{\textnormal{\textenglish{#1}}}
+
+\setlength{\parindent}{0pt}
+\pagestyle{fancy}     % Set the page style to fancy
+\fancyhf{}            % Clear all header and footer fields
+\renewcommand{\headrulewidth}{0pt} % No line in header
+\setlength{\headsep}{0.2cm}% Set the space between header and text
+
+% Define header content
+\fancyhead[L]{Page: {\thepage}} % Left header
+\fancyhead[R]{\ifthenelse{\value{page}=1}{\today}{} } % Right header shows date on first page
+
+\def\imagewidth{0.9}
+
+\newenvironment{cheatformula}[1][כותרת]{
+    \begin{minipage}{\linewidth}
+    \textbf{#1}:
+}{
+    % changing vertical  space between every cheat formula
+    \end{minipage}\\[0ex]
+}
+
+\newcommand{\cheatimage}[4][\imagewidth]{
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=#1\linewidth]{#2}
+        \caption{#3}
+        \label{#4}
+    \end{figure}
+}
+
+\newcommand*{\NameAndID}{%
+    \par\noindent\makebox[2in]{\hrulefill} \hspace{0.5in}\makebox[2.0in]{\hrulefill}%
+    \par\noindent\makebox[2in][r]{Ramtin Behesht Aeen}      \hspace{0.5in}\makebox[2.0in][r]{ramtinba145822@gmail.com}%
+}%
+
+\title{Summary of }
+\author{Auther}
+
+\begin{document}
+
+\setlength{\columnsep}{1cm}
+\setlength{\columnseprule}{1pt}
+
+\makeatletter
+\begin{center}
+    {\NameAndID}\\[2ex]
+    {\Large{\textbf{\@title}}}\\[2ex]
+\end{center}
+\makeatother
+
+\begin{multicols*}{2}
+\raggedcolumns
+
+\section{Cost Function for one Dimension}
+
+\begin{cheatformula}[Learning Model]
+
+\begin{itemize}
+  \item[$\circ$] Linear Regression Hypothesis:
+  \begin{equation}
+  \mathbf{h_{w}X} = w_{0} + w_{1} x_{1} + ... + w_{D}x_{D} := \mathbf{W^{T}X}
+  \end{equation}
+  \item[$\circ$] Input Vector X :
+  \begin{equation}
+  X= [x_{0}=1, \, x_{1}, \, x_{2}, \, ... \, ,x_{D}]
+  \end{equation}
+  \item[$\circ$] Parameter Vector W (features) :
+  \begin{equation}
+  W= [w_{0}=1, \, w_{1}, \, w_{2}, \, ... \, ,w_{D}]
+  \end{equation}
+\end{itemize}
+\end{cheatformula}
+
+\begin{cheatformula}[Squared Error(SE)] 
+Most Common error function in linear regression is:
+\begin{equation}
+SE: ( y^{(i)} - h(x^{(i)}, w))^{2}
+\end{equation}
+\end{cheatformula}
+
+
+
+\begin{cheatformula}[Sum of Squared Errors (SSE)]
+Cost function should measure all predictions. Thus a choice could be Sum of Squared Error(SE)
+\begin{equation}
+SSE: \sum_{i=1}^{N}(y^{(i)} - h(x^{(i)}, w) )
+\end{equation}
+\end{cheatformula}
+
+\begin{cheatformula}[Solve it analytically for one dimension]
+Predicted:
+\begin{equation}
+\widehat{y} = w_{0} + w_{1}x
+\end{equation}
+SSE or Cost Function:
+\begin{equation}
+J(w_{0}, w_{1}) := \sum_{i=1}^{N}(y^{(i)} - \widehat{y}^{(i)})^{2} = \sum_{i=1}^{N}(y^{(i)} -  w_{0} + w_{1}x^{(i)})^{2}
+\end{equation}
+Assumptions:
+\begin{equation}
+\frac{\partial J}{\partial w_{0}} = 0 \,, \frac{\partial J}{\partial w_{1}} = 0
+\end{equation}
+$\frac{\partial J}{\partial w_{0}} = 0:$ thus:
+\begin{equation}
+\frac{\partial }{\partial w_{0}}  ( \sum_{i=1}^{N}(y^{(i)} -  (w_{0} + w_{1}x^{(i)}))^{2}) = 0  \, \footnotemark
+\end{equation}
+
+\begin{equation}
+-2 \sum_{i=1}^{N}(y^{(i)} -  w_{0} - w_{1}x^{(i)}) = 0
+\end{equation}
+\footnotetext{\textsuperscript{\thefootnote} $fog(x)' = f(g(x))' g(x)'$}
+
+For this equation to equal zero, the following condition must be met:
+\begin{itemize}
+\item[$\circ$] $\sum_{i=1}^{N}y^{(i)} = 0 := Y$ 
+\item[$\circ$] $\sum_{i=1}^{N}-w_{0}  = 0 := n w_{0} $ 
+\item[$\circ$] $\sum_{i=1}^{N}-w_{1}x^{(i)}  = 0 := X $ 
+\end{itemize}
+Thus:
+\begin{equation}
+0 = Y - n w_{0} -w_{1}x^{(i)} \longrightarrow  w_{0} = \frac{(Y -w_{1}x^{(i)})}{n}
+\end{equation}
+\end{cheatformula}
+
+
+\begin{cheatformula}[Second Part $\frac{\partial J}{\partial w_{1}} = 0$ ]\\
+
+\begin{equation}
+\frac{\partial }{\partial w_{1}}  ( \sum_{i=1}^{N}(y^{(i)} -  (w_{0} + w_{1}x^{(i)}))^{2}) = 0
+\end{equation}
+
+\begin{equation}
+\sum_{i=1}^{N} 2(y^{(i)} -  (w_{0} + w_{1}x^{(i)})) x^{(i)} = 0  \, \footnotemark
+\end{equation}
+
+\begin{equation}
+\sum_{i=1}^{N} (x^{(i)}y^{(i)} - w_{0}x^{(i)} + w_{1}x^{(i)^{2}} = 0
+\end{equation}
+
+$ \sum_{i=1}^{N} (x^{(i)})=X   ,\,  w_{0} = \frac{(Y -w_{1}x^{(i)})}{n} \, so: $
+
+\begin{equation}
+\sum_{i=1}^{N} (x^{(i)}y^{(i)} - \frac{(Y -w_{1}x^{(i)})}{n} X  + w_{1}x^{(i)^{2}} = 0
+\end{equation}
+
+\begin{equation}
+n \sum_{i=1}^{N} x^{(i)}y^{(i)} - {(YX -w_{1}X^{2})}   + n\sum_{i=1}^{N}w_{1}x^{(i)^{2}} = 0
+\end{equation}
+
+\begin{equation}
+n \sum_{i=1}^{N} x^{(i)}y^{(i)} - YX=  - w_{1}X^{2}   + n w_{1}\sum_{i=1}^{N}x^{(i)^{2}}
+\end{equation}
+
+\begin{equation}
+n \sum_{i=1}^{N} x^{(i)}y^{(i)} - YX = w_{1} (n \sum_{i=1}^{N}x^{(i)^{2}} - X^{2})
+\end{equation}
+
+\begin{equation}
+w_{1} = \frac{n \sum_{i=1}^{N} x^{(i)}y^{(i)} - YX}{n \sum_{i=1}^{N}x^{(i)^{2}} - X^{2}}
+\end{equation}
+
+ \footnotetext{\textsuperscript{\thefootnote} $ \frac{\partial}  {\partial x} xy =y \frac{\partial}  {\partial x}x =y $}
+ 
+\end{cheatformula}
+\pagebreak
+
+
+
+
+\end{multicols*}
+\newpage
+
+\end{document}
