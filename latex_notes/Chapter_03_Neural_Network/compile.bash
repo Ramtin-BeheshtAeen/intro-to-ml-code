@@ -8,4 +8,6 @@ bibtex NeuralNetwork.tex
 pdflatex NeuralNetwork.tex
 pdflatex NeuralNetwork.tex
 
+cp NeuralNetwork.pdf ../..
+
 mv NeuralNetwork.pdf ..       # Move the PDF to build/
