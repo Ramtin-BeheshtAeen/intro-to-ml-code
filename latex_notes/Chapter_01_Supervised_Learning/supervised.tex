@@ -109,8 +109,8 @@
     \begin{minipage}{\linewidth}
     \textbf{#1}:
 }{
-    % changing vertical  space between every cheat formula
-    \end{minipage}\\[0ex]
+    % changing vertical space between every cheat formula
+    \end{minipage}\\[2ex]
 }
 
 \newcommand{\cheatimage}[4][\imagewidth]{
@@ -260,7 +260,6 @@ w_{1} = \frac{n \sum_{i=1}^{N} x^{(i)}y^{(i)} - YX}{n \sum_{i=1}^{N}x^{(i)^{2}} 
 
 
 \section{Cost Function for two oe more Dimension}
-
 \begin{cheatformula}[Analytical Solution for D Dimensions:]\
 In this section, the solution for D dimensions is discussed. For example, in apartment price prediction, we cannot only consider the size, but also other features like the year it was built, the number of rooms, and other property characteristics. Therefore, our x vector will contain multiple properties.
 
@@ -332,6 +331,50 @@ $$\frac{\partial J}{\partial w} = -2X^{T}y + 2X^{T}Xw = 0$$
 \end{cheatformula}
 
 \pagebreak
+
+\section{Gradient Descent}
+
+\begin{cheatformula}[Gradient Descent]
+$$ w^{t+1} = w^{t}-\alpha \nabla J(w^{t}) $$
+Gradient Ascent:
+$$ w^{t+1} = w^{t}+\alpha \nabla J(w^{t}) $$
+
+$$\nabla J(w^{t}) = 
+\begin{bmatrix}
+\frac{\partial J(w)}{\partial w_{1}} \\
+\vdots \\
+\frac{\partial J(w)}{\partial w_{D}}
+\end{bmatrix}$$
+
+\begin{itemize}
+  \item[$\circ$] $w^{t}$: Current weight vector
+  \item[$\circ$] $w^{t+1}$: Updated weight vector
+  \item[$\circ$] $\alpha$: Learning rate (step size)
+  \item[$\circ$] $\nabla J$: Gradient of the cost function
+\end{itemize}
+
+\end{cheatformula}
+
+\begin{cheatformula}[Variation of Gradient Descent]
+\begin{itemize}
+  \item[$\circ$] \textbf{Batch Gradient Descent}: Update weights using all training samples.
+  \item[$\circ$] \textbf{Stochastic Gradient Descent (SGD)}: Update weights using one training sample at a time.
+  \item[$\circ$] \textbf{Mini-Batch Gradient Descent}: Update weights using a subset of training samples.
+\end{itemize}
+\end{cheatformula}
+
+\begin{cheatformula}[Overfitting]
+Overfitting occurs when a model learns the training data too well,
+capturing noise and outliers that are not representative of the underlying pattern.
+This is like that the model memorizes the training data instead of learning the general pattern.
+$$J_{train}(w) << J_{test}(w) $$
+\end{cheatformula}
+
+\begin{cheatformula}[Underfitting]
+In this case model is too simple to capture the underlying pattern of the data.
+$$J_{train}(w) \approx  J_{test}(w)  >> 0 $$
+\end{cheatformula}
+
 
 \section{Perceptron}[A perceptron is a type of artificial neuron that serves
  as a fundamental building block for more complex neural
