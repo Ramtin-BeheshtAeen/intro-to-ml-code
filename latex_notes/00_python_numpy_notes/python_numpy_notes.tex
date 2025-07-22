@@ -1,0 +1,86 @@
+\documentclass{article}
+
+% Language setting
+% Replace `english' with e.g. `spanish' to change the document language
+\usepackage[english]{babel}
+
+% Set page size and margins
+% Replace `letterpaper' with`a4paper' for UK/EU standard size
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+
+\usepackage{xcolor}
+\usepackage{listings}
+\lstset{
+  language=Python,
+  basicstyle=\ttfamily\footnotesize,
+  keywordstyle=\color{blue},
+  stringstyle=\color{red},
+  commentstyle=\color{gray},
+  showstringspaces=false,
+  breaklines=true,
+  numbers=left,            % ← Line numbers on the left
+  numberstyle=\tiny\color{gray}, % Style of line numbers
+  numbersep=2pt            % Space between numbers and code
+}
+
+% Automatic Gapping after code snippits:
+\usepackage{etoolbox}
+\preto{\lstlisting}{\vspace{10pt}}
+\appto{\endlstlisting}{\vspace{10pt}}
+
+
+\title{Python and Latex Keynotes}
+\author{Ramtin.B.A}
+
+\begin{document}
+\maketitle
+
+% \begin{abstract}
+% Your abstract.
+% \end{abstract}
+
+\section{Python}
+\subsection{type hinting:}
+
+These don’t enforce types at runtime, but they:
+\begin{itemize}
+\item Help with readability.  
+\item Enable better auto-completion and linting in editors like VS Code or PyCharm.
+\item Make it easier for tools like mypy, Pyright, or Pylance to check for type correctness.
+\end{itemize}
+
+example of type hinting in older python versions:
+\begin{lstlisting}
+    class NN(MLP):
+    def test(self, x_test, y_test):
+        # expected x_test and y_test to be np.ndarray
+        return some_float_value
+
+\end{lstlisting}
+  
+modern examples:
+\begin{lstlisting}
+    def my_func(data: list[int]) -> dict[str, float]:
+\end{lstlisting}
+or:
+\begin{lstlisting}
+    def test(self, x_test: np.ndarray, y_test: np.ndarray) -> float:
+\end{lstlisting}
+
+This is just a function declaration inside a class, but with type annotations:
+
+\begin{itemize}
+    \item \texttt{x\_test: np.ndarray} – This says that \texttt{x\_test} is expected to be a NumPy array.
+    \item \texttt{y\_test: np.ndarray} – Same for \texttt{y\_test}.
+    \item \texttt{-> float} – The function is expected to return a float.
+\end{itemize}
+  
+
+\section{Numpy}
+
+\end{document}
