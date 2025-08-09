@@ -1,11 +1,12 @@
 \documentclass{article}
 \usepackage[a4paper, top=2cm,right=1cm,left=1cm,bottom=0.5cm]{geometry}
 \usepackage{url}
-
+\usepackage{amsmath}
 \usepackage{ifthen}
 \usepackage{xcolor}
 \usepackage{amsmath}
 \usepackage{tikz} 
+\usetikzlibrary{positioning}
 
 \usepackage{xcolor}
 \usepackage{listings}
@@ -19,7 +20,10 @@
   breaklines=true,
   numbers=left,            % ← Line numbers on the left
   numberstyle=\tiny\color{gray}, % Style of line numbers
-  numbersep=2pt            % Space between numbers and code
+  numbersep=2pt,        % Space between numbers and code
+  inputencoding=utf8,
+  extendedchars=true,
+  literate={∂}{{\ensuremath{\partial}}}1 {…}{{\ldots}}1
 }
 
 \usepackage{multicol}
@@ -161,10 +165,206 @@
 \raggedcolumns
 
 
-\section{Neural Network}
+\section{Neural Network Theory}
 \begin{cheatformula}[Neural Network Structure]
 
-Simple Python Code:
+  \begin{tikzpicture}[
+    node distance=1cm,  % set base distance between nodes
+    main/.style = {draw, circle},
+    xshift=-2cm
+  ]
+    \node[main] (z) {$z$};
+    \node (x) [left=of z, xshift=-0.3cm] {$x$};          % move x more to the left
+    \node (b) [above=of x, yshift=3mm] {$b$};            % lift b up a bit from x
+    \node[main] (A) [right=of z, xshift=-0.5cm] {$A$};      % A right of z, no extra shift
+    \node (y_hat) [right=of A] {$\hat{y} \,\mathrm{(Predicted)} \mid y\, \mathrm{(real\ values)}$};
+    \node[below=of y_hat] {$L(\hat{y}, y)$};
+  
+    \draw[->] (x) -- (z);
+    \draw[->] (b) -- (z);
+    \draw[->] (z) -- (A);
+    \draw[->] (A) -- (y_hat);
+  \end{tikzpicture}
+  
+\end{cheatformula}
+
+\begin{cheatformula}[backward pass for w]
+
+  \begin{tikzpicture}[
+    node distance=1cm,  % set base distance between nodes
+    main/.style = {draw, circle},
+    xshift=-2cm
+  ]
+    \node[main] (z) {$z$};
+    \node (x) [left=of z, xshift=-0.3cm] {$x$};          % move x more to the left
+    \node (b) [above=of x, yshift=3mm] {$b$};            % lift b up a bit from x
+    \node[main] (A) [right=of z, xshift=-0.5cm] {$A$};      % A right of z, no extra shift
+    \node (y_hat) [right=of A] {$\hat{y} \,\mathrm{(Predicted)} \mid y\, \mathrm{(real\ values)}$};
+    \node[below=of y_hat] {$L(\hat{y}, y)$};
+  
+    \draw[->] (x) -- (z);
+    \draw[->] (b) -- (z);
+    \draw[->] (z) -- (A);
+    \draw[->] (A) -- (y_hat);
+    % Back ward pass:
+    \draw[->,red] (y_hat) to[bend left=20] node[midway, below] { \color{red} $\frac{\partial L} {\partial \hat{y}}$} (A);
+    \draw[->,red] (A) to[bend left=20] node[midway, below] { \color{red} $\frac{\partial \hat{y}} {\partial z}$} (z);
+    \draw[->,red] (z) to[bend left=20] node[midway, below] { \color{red} $\frac{\partial z} {\partial w}$} (x);
+  \end{tikzpicture}
+  
+\end{cheatformula}
+
+\begin{cheatformula}[backward pass for b]
+
+  \begin{tikzpicture}[
+    node distance=1cm,  % set base distance between nodes
+    main/.style = {draw, circle},
+    xshift=-2cm
+  ]
+    \node[main] (z) {$z$};
+    \node (x) [left=of z, xshift=-0.3cm] {$x$};          % move x more to the left
+    \node (b) [above=of x, yshift=3mm] {$b$};            % lift b up a bit from x
+    \node[main] (A) [right=of z, xshift=-0.5cm] {$A$};      % A right of z, no extra shift
+    \node (y_hat) [right=of A] {$\hat{y} \,\mathrm{(Predicted)} \mid y\, \mathrm{(real\ values)}$};
+    \node[below=of y_hat] {$L(\hat{y}, y)$};
+  
+    \draw[->] (x) -- (z);
+    \draw[->] (b) -- (z);
+    \draw[->] (z) -- (A);
+    \draw[->] (A) -- (y_hat);
+    % Back ward pass:
+    \draw[->,magenta] (y_hat) to[bend left=20] node[midway, below] { \color{magenta} $\frac{\partial L} {\partial \hat{y}}$} (A);
+    \draw[->,magenta] (A) to[bend left=20] node[midway, below] { \color{magenta} $\frac{\partial \hat{y}} {\partial z}$} (z);
+    \draw[->,magenta] (z) to[bend left=20] node[midway, below] { \color{magenta} $\frac{\partial z} {\partial b}$} (b);
+  \end{tikzpicture}
+  
+\end{cheatformula}
+
+
+\begin{cheatformula}[backward pass for w mathematically]
+  \begin{equation}
+    L =\underbrace{ L(\underbrace{ \hat{y} \underbrace{ (z(Xw+b)) }_{\frac{\partial z} {\partial w} } }_{\frac{\partial \hat{y}} {\partial z}} )}_{\frac{\partial L} {\partial \hat{y}}}
+  \end{equation}
+  \begin{equation}
+    \frac{\partial L} {\partial w}  = \underbrace{\frac{\partial L} {\partial z}}_{ \frac{\partial L} {\partial \hat{y}}  \frac{\partial \hat{y}} {\partial z} } 
+    \frac{\partial z} {\partial w}  
+  \end{equation}
+  as a Summary:
+
+$$
+L = \underbrace{L\left(\hat{y}\right)}_{\frac{\partial L}{\partial \hat{y}}} = \underbrace{L\left(\hat{y}\left(z\right)\right)}_{\frac{\partial L}{\partial \hat{y}} \cdot \frac{\partial \hat{y}}{\partial z}} = \underbrace{L\left(\hat{y}\left(z(XW + b)\right)\right)}_{\frac{\partial L}{\partial \hat{y}} \cdot \frac{\partial \hat{y}}{\partial z} \cdot \frac{\partial z}{\partial W}}
+$$
+
+Or more explicitly for the chain rule:
+
+$$
+\frac{\partial L}{\partial W} = \frac{\partial L}{\partial \hat{y}} \times \frac{\partial \hat{y}}{\partial z} \times \frac{\partial z}{\partial W}
+$$
+
+\begin{itemize}
+  \item $z = XW + b$
+  \item $\hat{y} = f(z)$ (activation function, e.g. softmax)
+  \item $L = loss(\hat{y}, y)$
+\end{itemize}
+
+The derivatives $\frac{\partial L}{\partial \hat{y}}$, $\frac{\partial \hat{y}}{\partial z}$, and $\frac{\partial z}{\partial W}$ represent the gradient chain from output all the way down to weights.
+
+
+  
+\end{cheatformula}
+
+
+\section{Coding the Neural Network}
+\begin{cheatformula}[Neural Network Structure]
+
+  \[
+  \frac{\partial L}{\partial w} 
+  = \frac{\partial L}{\partial \hat{y}} \cdot \frac{\partial \hat{y}}{\partial z} \cdot \frac{\partial z}{\partial w}
+  \]
+  
+  where:
+  \begin{itemize}
+      \item \textbf{Loss derivative}: $\frac{\partial L}{\partial \hat{y}}$
+      \item \textbf{Activation derivative}: $\frac{\partial \hat{y}}{\partial z}$
+      \item \textbf{Linear model derivative}: $\frac{\partial z}{\partial w}$
+  \end{itemize}
+\end{cheatformula}
+
+  \begin{cheatformula}[1. Loss derivative $\left(\frac{\partial L}{\partial \hat{y}}\right)$]
+  This is computed in:
+  
+  \begin{lstlisting}
+  def backward(self) -> np.ndarray:  # CrossEntropy
+      grad = -self.target / self.prediction / self.target.shape[0]
+      return grad
+  \end{lstlisting}
+  
+  \begin{itemize}
+      \item \texttt{self.prediction} = $\hat{y}$ (output of softmax)
+      \item This gives the gradient from the loss with respect to the softmax output $\hat{y}$.
+  \end{itemize}
+  \end{cheatformula}
+  
+  \begin{cheatformula}[Activation derivative $\left(\frac{\partial \hat{y}}{\partial z}\right)$]
+  If you have a \texttt{Softmax} layer:
+  
+  \begin{lstlisting}
+  def backward(self, up_grad: np.ndarray) -> np.ndarray:  # Softmax
+      ...
+      down_grad[i] = np.dot(jacobian, up_grad[i])
+  \end{lstlisting}
+  
+  \begin{itemize}
+      \item \texttt{up\_grad} is $\frac{\partial L}{\partial \hat{y}}$ from the loss.
+      \item The softmax Jacobian gives $\frac{\partial \hat{y}}{\partial z}$.
+      \item Output \texttt{down\_grad} is $\frac{\partial L}{\partial z}$.
+      \item This matches step 2 of the chain rule.
+  \end{itemize}
+  \end{cheatformula}
+  
+  \begin{cheatformula}[Linear model derivative $\left(\frac{\partial z}{\partial w}\right)$]
+  In your \texttt{Linear} layer:
+  
+  \begin{lstlisting}
+  def backward(self, up_grad: np.ndarray) -> np.ndarray:  # Linear
+      self.dw = np.dot(self.inp.T, up_grad)  # ∂L/∂w
+      self.db = np.sum(up_grad, axis=0, keepdims=True)  # ∂L/∂b
+      down_grad = np.dot(up_grad, self.w.T)  # ∂L/∂input
+      return down_grad
+  \end{lstlisting}
+  
+  \begin{itemize}
+      \item \texttt{up\_grad} is $\frac{\partial L}{\partial z}$ from the activation.
+      \item Multiplying with \texttt{inp.T} applies $\frac{\partial z}{\partial w}$ to get $\frac{\partial L}{\partial w}$.
+      \item This is step 3 of the professor’s chain rule.
+  \end{itemize}
+
+  
+  \noindent\textbf{Full Chain in Code:}
+  \begin{enumerate}
+      \item Loss backward $\rightarrow$ \texttt{CrossEntropy.backward()}
+      \[
+      \frac{\partial L}{\partial \hat{y}}
+      \]
+      \item Activation backward $\rightarrow$ \texttt{Softmax.backward()}
+      \[
+      \frac{\partial L}{\partial z} = \frac{\partial L}{\partial \hat{y}} \cdot \frac{\partial \hat{y}}{\partial z}
+      \]
+      \item Linear backward $\rightarrow$ \texttt{Linear.backward()}
+      \[
+      \frac{\partial L}{\partial w} = \frac{\partial L}{\partial z} \cdot \frac{\partial z}{\partial w}
+      \]
+  \end{enumerate}
+
+  \end{cheatformula}
+    
+  
+  
+  
+
+
+\begin{cheatformula}[Linear ]
+Abstract Python Code for Layer:
 \begin{lstlisting}
   class Layer:
     def __init__(self):
@@ -183,6 +383,7 @@ Simple Python Code:
     def step(self, lr: float) -> None:
         pass
 \end{lstlisting}
+
 \begin{itemize}
   \item[$\circ$] Input features:
   \begin{equation}

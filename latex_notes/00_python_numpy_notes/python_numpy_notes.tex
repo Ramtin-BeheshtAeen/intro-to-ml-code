@@ -81,6 +81,80 @@ This is just a function declaration inside a class, but with type annotations:
 \end{itemize}
   
 
+\subsection{What is __call__}
+
+If you define `__call__` in a class, it makes **instances of that class callable like functions**.
+
+That means after creating an object, you can "call" it using `()` as if it were a regular function.
+
+---
+
+## 📌 Basic Example
+
+\begin{lstlisting}
+class Greeter:
+    def __init__(self, name):
+        self.name = name
+
+    def __call__(self, greeting):
+        return f"{greeting}, {self.name}!"
+
+g = Greeter("Alice")
+print(g("Hello"))  # Output: Hello, Alice!
+\end{lstlisting}
+
+> 🔎 `g("Hello")` is equivalent to `g.__call__("Hello")`
+
+---
+
+## 🧠 When to Use `__call__`
+
+| Use Case                         | Example                                            |
+| -------------------------------- | -------------------------------------------------- |
+| **Function objects**             | ML models, custom layers, or pipelines             |
+| **Memoization / caching**        | Store previous calls and results                   |
+| **Stateful function-like logic** | Functions that keep history, counters, etc.        |
+| **DSL or APIs**                  | For making fluent interfaces or functional configs |
+
+---
+
+## 🔬 Practical Example (ML Style)
+
+\begin{lstlisting}
+class LinearModel:
+    def __init__(self, w, b):
+        self.w = w
+        self.b = b
+
+    def __call__(self, x):
+        return self.w * x + self.b
+
+model = LinearModel(2, 3)
+print(model(5))  # Output: 13
+\end{lstlisting}
+
+That’s just like doing:
+
+\begin{lstlisting}
+def linear(x):
+    return 2 * x + 3
+\end{lstlisting}
+
+But now it's an **object with state**, which you can update, inspect, or reuse.
+
+---
+
+##Summary
+
+* `__call__` lets you write `obj()` instead of `obj.__call__()`
+* It's useful when you want **function-like objects** that also carry **internal state**.
+* Common in **machine learning**, **decorators**, **fluent APIs**, and **function wrappers**.
+
+---
+
+Would you like an example combining `__call__` and `__init__` with a decorator-like use case or maybe for a neural network layer class?
+
+
 \section{Numpy}
 
 \end{document}
