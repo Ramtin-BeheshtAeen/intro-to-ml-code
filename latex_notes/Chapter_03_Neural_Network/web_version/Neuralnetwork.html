@@ -1,0 +1,994 @@
+<?xml version="1.0" encoding="iso-8859-1" ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">  
+<!--http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd-->  
+<html xmlns="http://www.w3.org/1999/xhtml"  
+> 
+<head><title></title> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" /> 
+<meta name="generator" content="TeX4ht (https://tug.org/tex4ht/)" /> 
+<meta name="originator" content="TeX4ht (https://tug.org/tex4ht/)" /> 
+<!-- xhtml,html --> 
+</head><body 
+>
+<div class="center" 
+>
+<!--l. 158--><p class="noindent" >
+</p><!--l. 159--><p class="noindent" >____________________________ &#x00A0;&#x00A0;&#x00A0;           ___________________________________________
+</p><!--l. 159--><p class="noindent" >         Ramtin Behesht Aeen &#x00A0;&#x00A0;&#x00A0;                  ramtinba145822@gmail.com<br /><br />
+<span 
+class="cmbx-12x-x-120">Summary of</span><br /><br />
+</p>
+</div>
+<div class="columns-2">
+<h3 class="sectionHead"><span class="titlemark">1   </span> <a 
+ id="x1-10001"></a>Neural Network Theory</h3>
+<div class="minipage"><!--l. 169--><p class="noindent" ><span 
+class="cmbx-10">Neural Network Structure</span>:
+</p><!--l. 171--><p class="noindent" ><img 
+src="/static/uploads/projects/NeuralNetwork0x.svg" alt="zxbA&#x02C6;yL((P&#x02C6;yr,eyd)icted) | y(real values)
+"  />                                                                                                       </p></div>
+<div class="minipage"><!--l. 191--><p class="noindent" ><span 
+class="cmbx-10">backward pass for w</span>:
+</p><!--l. 193--><p class="noindent" ><img 
+src="/static/uploads/projects/NeuralNetwork1x.svg" alt="&#x2202;&#x2202;&#x2202;L&#x02C6;yz-
+zxbA&#x02C6;yL&#x2202;&#x2202;&#x2202;((&#x02C6;yzwP&#x02C6;yr,eyd)icted) | y(real values)
+"  />                                                                                                       </p></div>
+<div class="minipage"><!--l. 217--><p class="noindent" ><span 
+class="cmbx-10">backward pass for b</span>:
+</p><!--l. 219--><p class="noindent" ><img 
+src="/static/uploads/projects/NeuralNetwork2x.svg" alt="&#x2202;&#x2202;&#x2202;L&#x02C6;yz
+zxbA&#x02C6;yL&#x2202;&#x2202;&#x2202;((&#x02C6;yzbP&#x02C6;yr,eyd)icted) | y(real values)
+"  />                                                                                                       </p></div>
+                                                                                                       
+                                                                                                       
+<div class="minipage"><!--l. 244--><p class="noindent" ><span 
+class="cmbx-10">backward pass for w mathematically</span>:
+</p>
+<table 
+class="equation"><tr><td>
+<div class="math-display" >
+<img 
+src="/static/uploads/projects/NeuralNetwork3x.svg" alt="L = L(&#x02C6;y(&#x25DF;z(Xw&#x25DD;&#x25DC;+-b))&#x25DE;)
+            &#x2202;&#x2202;wz
+      &#x25DF;----&#x25DD;&#x2202;&#x25DC;&#x02C6;y----&#x25DE;
+    &#x25DF;-----&#x25DD;&#x2202;&#x25DC;z----&#x25DE;
+          &#x2202;&#x2202;L&#x02C6;y
+" class="math-display"  /><a 
+ id="x1-1001r1"></a></div>
+</td><td class="equation-label">(1)</td></tr></table>
+<!--l. 247--><p class="nopar" >
+</p>
+<table 
+class="equation"><tr><td>
+<div class="math-display" >
+<img 
+src="/static/uploads/projects/NeuralNetwork4x.svg" alt="&#x2202;L    &#x2202;L  &#x2202;z
+&#x2202;w-=  &#x2202;z- &#x2202;w-
+      &#x25DF;&#x2202;L&#x25DD;&#x25DC;&#x25DE;&#x2202;y&#x02C6;
+      &#x2202;y&#x02C6;&#x2202;z
+" class="math-display"  /><a 
+ id="x1-1002r2"></a></div>
+</td><td class="equation-label">(2)</td></tr></table>
+<!--l. 251--><p class="nopar" >as a Summary:
+</p><!--l. 254--><p class="noindent" >
+</p>
+<div class="math-display" >
+<img 
+src="/static/uploads/projects/NeuralNetwork5x.svg" alt="L = L(&#x02C6;y)= L (&#x02C6;y(z)) = L(&#x02C6;y(z(XW  + b)))
+    &#x25DF;&#x25DD;&#x2202;&#x25DC;L&#x25DE;  &#x25DF;-&#x2202;L&#x25DD;&#x25DC;&#x2202;&#x02C6;y&#x25DE;   &#x25DF;---&#x2202;L-&#x25DD;&#x2202;&#x25DC;&#x02C6;y-&#x2202;z---&#x25DE;
+     &#x2202;&#x02C6;y     &#x2202;y&#x02C6;&#x22C5;&#x2202;z        &#x2202;y&#x02C6;&#x22C5;&#x2202;z&#x22C5;&#x2202;W
+" class="math-display"  /></div>
+<!--l. 258--><p class="noindent" >Or more explicitly for the chain rule:
+</p><!--l. 260--><p class="noindent" >
+</p>
+<div class="math-display" >
+<img 
+src="/static/uploads/projects/NeuralNetwork6x.svg" alt="&#x2202;L    &#x2202;L   &#x2202;&#x02C6;y   &#x2202;z
+&#x2202;W-=  &#x2202;&#x02C6;y-&#x00D7; &#x2202;z-&#x00D7; &#x2202;W--
+" class="math-display"  /></div>
+     <ul class="itemize1">
+     <li class="itemize">
+     <!--l. 265--><p class="noindent" ><span 
+class="cmmi-10">z </span>= <span 
+class="cmmi-10">XW </span>+ <span 
+class="cmmi-10">b</span>
+     </p></li>
+     <li class="itemize">
+     <!--l. 266--><p class="noindent" ><span 
+class="cmmi-10">&#x0177;</span> = <span 
+class="cmmi-10">f</span>(<span 
+class="cmmi-10">z</span>) (activation function, e.g. softmax)
+     </p></li>
+     <li class="itemize">
+     <!--l. 267--><p class="noindent" ><span 
+class="cmmi-10">L </span>= <span 
+class="cmmi-10">loss</span>(<span 
+class="cmmi-10">&#x0177;</span><span 
+class="cmmi-10">,y</span>)</p></li></ul>
+<!--l. 270--><p class="noindent" >The derivatives <img 
+src="/static/uploads/projects/NeuralNetwork7x.svg" alt="&#x2202;&#x2202;L&#x02C6;y"  class="frac" align="middle" />, <img 
+src="/static/uploads/projects/NeuralNetwork8x.svg" alt="&#x2202;&#x2202;&#x02C6;yz"  class="frac" align="middle" />, and <img 
+src="/static/uploads/projects/NeuralNetwork9x.svg" alt="&#x2202;&#x2202;Wz"  class="frac" align="middle" /> represent the gradient chain from output all the way down to weights.                 </p></div>
+<!--l. 277--><p class="noindent" >
+</p>
+<h3 class="sectionHead"><span class="titlemark">2   </span> <a 
+ id="x1-20002"></a>Coding the Neural Network</h3>
+<div class="minipage"><!--l. 278--><p class="noindent" ><span 
+class="cmbx-10">Neural Network Structure</span>:
+</p><!--l. 280--><p class="noindent" >
+</p>
+<div class="math-display" >
+<img 
+src="/static/uploads/projects/NeuralNetwork10x.svg" alt="&#x2202;L    &#x2202;L  &#x2202;&#x02C6;y  &#x2202;z
+&#x2202;w-=  &#x2202;&#x02C6;y-&#x22C5;&#x2202;z-&#x22C5;&#x2202;w-
+" class="math-display"  /></div>
+<!--l. 285--><p class="noindent" >where: </p>
+     <ul class="itemize1">
+     <li class="itemize">
+     <!--l. 287--><p class="noindent" ><span 
+class="cmbx-10">Loss derivative</span>: <img 
+src="/static/uploads/projects/NeuralNetwork11x.svg" alt="&#x2202;&#x2202;L&#x02C6;y"  class="frac" align="middle" />
+     </p></li>
+     <li class="itemize">
+     <!--l. 288--><p class="noindent" ><span 
+class="cmbx-10">Activation derivative</span>: <img 
+src="/static/uploads/projects/NeuralNetwork12x.svg" alt="&#x2202;&#x02C6;y&#x2202;z"  class="frac" align="middle" />
+     </p></li>
+     <li class="itemize">
+     <!--l. 289--><p class="noindent" ><span 
+class="cmbx-10">Linear model derivative</span>: <img 
+src="/static/uploads/projects/NeuralNetwork13x.svg" alt="&#x2202;&#x2202;zw-"  class="frac" align="middle" /></p></li></ul>                                                                        </div>
+<div class="minipage"><!--l. 293--><p class="noindent" ><span 
+class="cmbx-10">1. Loss derivative </span><img 
+src="/static/uploads/projects/NeuralNetwork14x.svg" alt="(&#x2202;L )
+ &#x2202;&#x02C6;y"  class="left" align="middle" />:  This is computed in:
+</p>
+<!--l. 296-->
+<pre class="lstlisting" id="listing-1"><span class="label"><a 
+ id="x1-2001r1"></a><span 
+class="cmr-5">1</span></span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span style="color:#0000FF"><span 
+class="cmtt-8">def</span></span><span style="color:#000000"> </span><span style="color:#000000"><span 
+class="cmtt-8">backward</span></span><span style="color:#000000"><span 
+class="cmtt-8">(</span></span><span style="color:#000000"><span 
+class="cmtt-8">self</span></span><span style="color:#000000"><span 
+class="cmtt-8">)</span></span><span style="color:#000000"> </span><span style="color:#000000"><span 
+class="cmtt-8">-&#x003E;</span></span><span style="color:#000000"> </span><span style="color:#000000"><span 
+class="cmtt-8">np</span></span><span style="color:#000000"><span 
+class="cmtt-8">.</span></span><span style="color:#000000"><span 
+class="cmtt-8">ndarray</span></span><span style="color:#000000"><span 
+class="cmtt-8">:</span></span><span style="color:#000000"> </span><span 
+class="cmtt-8">&#x00A0;</span><span style="color:#808080"><span 
+class="cmtt-8">#</span></span><span style="color:#808080"> </span><span style="color:#808080"><span 
+class="cmtt-8">CrossEntropy</span></span> 
+<span class="label"><a 
+ id="x1-2002r2"></a><span 
+class="cmr-5">2</span></span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span style="color:#000000"><span 
+class="cmtt-8">grad</span></span><span style="color:#000000"> </span><span style="color:#000000"><span 
+class="cmtt-8">=</span></span><span style="color:#000000"> </span><span style="color:#000000"><span 
+class="cmtt-8">-</span></span><span style="color:#000000"><span 
+class="cmtt-8">self</span></span><span style="color:#000000"><span 
+class="cmtt-8">.</span></span><span style="color:#000000"><span 
+class="cmtt-8">target</span></span><span style="color:#000000"> </span><span style="color:#000000"><span 
+class="cmtt-8">/</span></span><span style="color:#000000"> </span><span style="color:#000000"><span 
+class="cmtt-8">self</span></span><span style="color:#000000"><span 
+class="cmtt-8">.</span></span><span style="color:#000000"><span 
+class="cmtt-8">prediction</span></span><span style="color:#000000"> </span><span style="color:#000000"><span 
+class="cmtt-8">/</span></span><span style="color:#000000"> </span><span style="color:#000000"><span 
+class="cmtt-8">self</span></span><span style="color:#000000"><span 
+class="cmtt-8">.</span></span><span style="color:#000000"><span 
+class="cmtt-8">target</span></span><span style="color:#000000"><span 
+class="cmtt-8">.</span></span><span style="color:#000000"><span 
+class="cmtt-8">shape</span></span><span style="color:#000000"><span 
+class="cmtt-8">[0]</span></span> 
+<span class="label"><a 
+ id="x1-2003r3"></a><span 
+class="cmr-5">3</span></span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span style="color:#0000FF"><span 
+class="cmtt-8">return</span></span><span style="color:#000000"> </span><span style="color:#000000"><span 
+class="cmtt-8">grad</span></span></pre>
+     <ul class="itemize1">
+     <li class="itemize">
+     <!--l. 303--><p class="noindent" ><span 
+class="cmtt-10">self.prediction </span>= <span 
+class="cmmi-10">&#x0177;</span> (output of softmax)
+     </p></li>
+     <li class="itemize">
+     <!--l. 304--><p class="noindent" >This gives the gradient from the loss with respect to the softmax output <span 
+class="cmmi-10">&#x0177;</span>.</p></li></ul>                                    </div>
+                                                                                                       
+                                                                                                       
+<div class="minipage"><!--l. 308--><p class="noindent" ><span 
+class="cmbx-10">Activation derivative </span><img 
+src="/static/uploads/projects/NeuralNetwork15x.svg" alt="( &#x2202;&#x2202;&#x02C6;yz)"  class="left" align="middle" />:  If you have a <span 
+class="cmtt-10">Softmax </span>layer:
+</p>
+<!--l. 311-->
+<pre class="lstlisting" id="listing-2"><span class="label"><a 
+ id="x1-2004r1"></a><span 
+class="cmr-5">1</span></span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span style="color:#0000FF"><span 
+class="cmtt-8">def</span></span><span style="color:#000000"> </span><span style="color:#000000"><span 
+class="cmtt-8">backward</span></span><span style="color:#000000"><span 
+class="cmtt-8">(</span></span><span style="color:#000000"><span 
+class="cmtt-8">self</span></span><span style="color:#000000"><span 
+class="cmtt-8">,</span></span><span style="color:#000000"> </span><span style="color:#000000"><span 
+class="cmtt-8">up_grad</span></span><span style="color:#000000"><span 
+class="cmtt-8">:</span></span><span style="color:#000000"> </span><span style="color:#000000"><span 
+class="cmtt-8">np</span></span><span style="color:#000000"><span 
+class="cmtt-8">.</span></span><span style="color:#000000"><span 
+class="cmtt-8">ndarray</span></span><span style="color:#000000"><span 
+class="cmtt-8">)</span></span><span style="color:#000000"> </span><span style="color:#000000"><span 
+class="cmtt-8">-&#x003E;</span></span><span style="color:#000000"> </span><span style="color:#000000"><span 
+class="cmtt-8">np</span></span><span style="color:#000000"><span 
+class="cmtt-8">.</span></span><span style="color:#000000"><span 
+class="cmtt-8">ndarray</span></span><span style="color:#000000"><span 
+class="cmtt-8">:</span></span><span style="color:#000000"> </span><span 
+class="cmtt-8">&#x00A0;</span><span style="color:#808080"><span 
+class="cmtt-8">#</span></span><span style="color:#808080"> </span><span style="color:#808080"><span 
+class="cmtt-8">Softmax</span></span> 
+<span class="label"><a 
+ id="x1-2005r2"></a><span 
+class="cmr-5">2</span></span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span style="color:#000000"><span 
+class="cmtt-8">...</span></span> 
+<span class="label"><a 
+ id="x1-2006r3"></a><span 
+class="cmr-5">3</span></span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span style="color:#000000"><span 
+class="cmtt-8">down_grad</span></span><span style="color:#000000"><span 
+class="cmtt-8">[</span></span><span style="color:#000000"><span 
+class="cmtt-8">i</span></span><span style="color:#000000"><span 
+class="cmtt-8">]</span></span><span style="color:#000000"> </span><span style="color:#000000"><span 
+class="cmtt-8">=</span></span><span style="color:#000000"> </span><span style="color:#000000"><span 
+class="cmtt-8">np</span></span><span style="color:#000000"><span 
+class="cmtt-8">.</span></span><span style="color:#000000"><span 
+class="cmtt-8">dot</span></span><span style="color:#000000"><span 
+class="cmtt-8">(</span></span><span style="color:#000000"><span 
+class="cmtt-8">jacobian</span></span><span style="color:#000000"><span 
+class="cmtt-8">,</span></span><span style="color:#000000"> </span><span style="color:#000000"><span 
+class="cmtt-8">up_grad</span></span><span style="color:#000000"><span 
+class="cmtt-8">[</span></span><span style="color:#000000"><span 
+class="cmtt-8">i</span></span><span style="color:#000000"><span 
+class="cmtt-8">])</span></span></pre>
+     <ul class="itemize1">
+     <li class="itemize">
+     <!--l. 318--><p class="noindent" ><span 
+class="cmtt-10">up</span><span 
+class="cmtt-10">_grad </span>is <img 
+src="/static/uploads/projects/NeuralNetwork16x.svg" alt="&#x2202;L
+&#x2202;&#x02C6;y"  class="frac" align="middle" /> from the loss.
+     </p></li>
+     <li class="itemize">
+     <!--l. 319--><p class="noindent" >The softmax Jacobian gives <img 
+src="/static/uploads/projects/NeuralNetwork17x.svg" alt="&#x2202;&#x02C6;y
+&#x2202;z"  class="frac" align="middle" />.
+     </p></li>
+     <li class="itemize">
+     <!--l. 320--><p class="noindent" >Output <span 
+class="cmtt-10">down</span><span 
+class="cmtt-10">_grad </span>is <img 
+src="/static/uploads/projects/NeuralNetwork18x.svg" alt="&#x2202;L
+&#x2202;z"  class="frac" align="middle" />.
+     </p></li>
+     <li class="itemize">
+     <!--l. 321--><p class="noindent" >This matches step 2 of the chain rule.</p></li></ul>                                                                   </div>
+                                                                                                       
+                                                                                                       
+<div class="minipage"><!--l. 325--><p class="noindent" ><span 
+class="cmbx-10">Linear model derivative </span><img 
+src="/static/uploads/projects/NeuralNetwork19x.svg" alt="(&#x2202;&#x2202;zw)"  class="left" align="middle" />:  In your <span 
+class="cmtt-10">Linear </span>layer:
+</p>
+<!--l. 328-->
+<pre class="lstlisting" id="listing-3"><span class="label"><a 
+ id="x1-2007r1"></a><span 
+class="cmr-5">1</span></span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span style="color:#0000FF"><span 
+class="cmtt-8">def</span></span><span style="color:#000000"> </span><span style="color:#000000"><span 
+class="cmtt-8">backward</span></span><span style="color:#000000"><span 
+class="cmtt-8">(</span></span><span style="color:#000000"><span 
+class="cmtt-8">self</span></span><span style="color:#000000"><span 
+class="cmtt-8">,</span></span><span style="color:#000000"> </span><span style="color:#000000"><span 
+class="cmtt-8">up_grad</span></span><span style="color:#000000"><span 
+class="cmtt-8">:</span></span><span style="color:#000000"> </span><span style="color:#000000"><span 
+class="cmtt-8">np</span></span><span style="color:#000000"><span 
+class="cmtt-8">.</span></span><span style="color:#000000"><span 
+class="cmtt-8">ndarray</span></span><span style="color:#000000"><span 
+class="cmtt-8">)</span></span><span style="color:#000000"> </span><span style="color:#000000"><span 
+class="cmtt-8">-&#x003E;</span></span><span style="color:#000000"> </span><span style="color:#000000"><span 
+class="cmtt-8">np</span></span><span style="color:#000000"><span 
+class="cmtt-8">.</span></span><span style="color:#000000"><span 
+class="cmtt-8">ndarray</span></span><span style="color:#000000"><span 
+class="cmtt-8">:</span></span><span style="color:#000000"> </span><span 
+class="cmtt-8">&#x00A0;</span><span style="color:#808080"><span 
+class="cmtt-8">#</span></span><span style="color:#808080"> </span><span style="color:#808080"><span 
+class="cmtt-8">Linear</span></span> 
+<span class="label"><a 
+ id="x1-2008r2"></a><span 
+class="cmr-5">2</span></span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span style="color:#000000"><span 
+class="cmtt-8">self</span></span><span style="color:#000000"><span 
+class="cmtt-8">.</span></span><span style="color:#000000"><span 
+class="cmtt-8">dw</span></span><span style="color:#000000"> </span><span style="color:#000000"><span 
+class="cmtt-8">=</span></span><span style="color:#000000"> </span><span style="color:#000000"><span 
+class="cmtt-8">np</span></span><span style="color:#000000"><span 
+class="cmtt-8">.</span></span><span style="color:#000000"><span 
+class="cmtt-8">dot</span></span><span style="color:#000000"><span 
+class="cmtt-8">(</span></span><span style="color:#000000"><span 
+class="cmtt-8">self</span></span><span style="color:#000000"><span 
+class="cmtt-8">.</span></span><span style="color:#000000"><span 
+class="cmtt-8">inp</span></span><span style="color:#000000"><span 
+class="cmtt-8">.</span></span><span style="color:#000000"><span 
+class="cmtt-8">T</span></span><span style="color:#000000"><span 
+class="cmtt-8">,</span></span><span style="color:#000000"> </span><span style="color:#000000"><span 
+class="cmtt-8">up_grad</span></span><span style="color:#000000"><span 
+class="cmtt-8">)</span></span><span style="color:#000000"> </span><span 
+class="cmtt-8">&#x00A0;</span><span style="color:#808080"><span 
+class="cmtt-8">#</span></span><span style="color:#808080"> </span><span style="color:#808080"><span 
+class="cmmi-8">&#x2202;</span></span><span style="color:#808080"><span 
+class="cmtt-8">L</span></span><span style="color:#808080"><span 
+class="cmtt-8">/</span></span><span style="color:#808080"><span 
+class="cmmi-8">&#x2202;</span></span><span style="color:#808080"><span 
+class="cmtt-8">w</span></span> 
+<span class="label"><a 
+ id="x1-2009r3"></a><span 
+class="cmr-5">3</span></span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span style="color:#000000"><span 
+class="cmtt-8">self</span></span><span style="color:#000000"><span 
+class="cmtt-8">.</span></span><span style="color:#000000"><span 
+class="cmtt-8">db</span></span><span style="color:#000000"> </span><span style="color:#000000"><span 
+class="cmtt-8">=</span></span><span style="color:#000000"> </span><span style="color:#000000"><span 
+class="cmtt-8">np</span></span><span style="color:#000000"><span 
+class="cmtt-8">.</span></span><span style="color:#0000FF"><span 
+class="cmtt-8">sum</span></span><span style="color:#000000"><span 
+class="cmtt-8">(</span></span><span style="color:#000000"><span 
+class="cmtt-8">up_grad</span></span><span style="color:#000000"><span 
+class="cmtt-8">,</span></span><span style="color:#000000"> </span><span style="color:#000000"><span 
+class="cmtt-8">axis</span></span><span style="color:#000000"><span 
+class="cmtt-8">=0,</span></span><span style="color:#000000"> </span><span style="color:#000000"><span 
+class="cmtt-8">keepdims</span></span><span style="color:#000000"><span 
+class="cmtt-8">=</span></span><span style="color:#000000"><span 
+class="cmtt-8">True</span></span><span style="color:#000000"><span 
+class="cmtt-8">)</span></span><span style="color:#000000"> </span><span 
+class="cmtt-8">&#x00A0;</span><span style="color:#808080"><span 
+class="cmtt-8">#</span></span><span style="color:#808080"> </span><span style="color:#808080"><span 
+class="cmmi-8">&#x2202;</span></span><span style="color:#808080"><span 
+class="cmtt-8">L</span></span><span style="color:#808080"><span 
+class="cmtt-8">/</span></span><span style="color:#808080"><span 
+class="cmmi-8">&#x2202;</span></span><span style="color:#808080"><span 
+class="cmtt-8">b</span></span> 
+<span class="label"><a 
+ id="x1-2010r4"></a><span 
+class="cmr-5">4</span></span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span style="color:#000000"><span 
+class="cmtt-8">down_grad</span></span><span style="color:#000000"> </span><span style="color:#000000"><span 
+class="cmtt-8">=</span></span><span style="color:#000000"> </span><span style="color:#000000"><span 
+class="cmtt-8">np</span></span><span style="color:#000000"><span 
+class="cmtt-8">.</span></span><span style="color:#000000"><span 
+class="cmtt-8">dot</span></span><span style="color:#000000"><span 
+class="cmtt-8">(</span></span><span style="color:#000000"><span 
+class="cmtt-8">up_grad</span></span><span style="color:#000000"><span 
+class="cmtt-8">,</span></span><span style="color:#000000"> </span><span style="color:#000000"><span 
+class="cmtt-8">self</span></span><span style="color:#000000"><span 
+class="cmtt-8">.</span></span><span style="color:#000000"><span 
+class="cmtt-8">w</span></span><span style="color:#000000"><span 
+class="cmtt-8">.</span></span><span style="color:#000000"><span 
+class="cmtt-8">T</span></span><span style="color:#000000"><span 
+class="cmtt-8">)</span></span><span style="color:#000000"> </span><span 
+class="cmtt-8">&#x00A0;</span><span style="color:#808080"><span 
+class="cmtt-8">#</span></span><span style="color:#808080"> </span><span style="color:#808080"><span 
+class="cmmi-8">&#x2202;</span></span><span style="color:#808080"><span 
+class="cmtt-8">L</span></span><span style="color:#808080"><span 
+class="cmtt-8">/</span></span><span style="color:#808080"><span 
+class="cmmi-8">&#x2202;</span></span><span style="color:#808080"><span 
+class="cmtt-8">input</span></span> 
+<span class="label"><a 
+ id="x1-2011r5"></a><span 
+class="cmr-5">5</span></span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span style="color:#0000FF"><span 
+class="cmtt-8">return</span></span><span style="color:#000000"> </span><span style="color:#000000"><span 
+class="cmtt-8">down_grad</span></span></pre>
+     <ul class="itemize1">
+     <li class="itemize">
+     <!--l. 337--><p class="noindent" ><span 
+class="cmtt-10">up</span><span 
+class="cmtt-10">_grad </span>is <img 
+src="/static/uploads/projects/NeuralNetwork20x.svg" alt="&#x2202;L
+&#x2202;z"  class="frac" align="middle" /> from the activation.
+     </p></li>
+     <li class="itemize">
+     <!--l. 338--><p class="noindent" >Multiplying with <span 
+class="cmtt-10">inp.T </span>applies <img 
+src="/static/uploads/projects/NeuralNetwork21x.svg" alt="&#x2202;z-
+&#x2202;w"  class="frac" align="middle" /> to get <img 
+src="/static/uploads/projects/NeuralNetwork22x.svg" alt="&#x2202;L-
+&#x2202;w"  class="frac" align="middle" />.
+     </p></li>
+     <li class="itemize">
+     <!--l. 339--><p class="noindent" >This is step 3 of the professor&#8217;s chain rule.</p></li></ul>
+<!--l. 343--><p class="noindent" ><span 
+class="cmbx-10">Full Chain in Code:</span>
+     </p><dl class="enumerate-enumitem"><dt class="enumerate-enumitem">
+  1. </dt><dd 
+class="enumerate-enumitem">Loss backward <span 
+class="cmsy-10">&#x2192; </span><span 
+class="cmtt-10">CrossEntropy.backward()</span>
+<div class="math-display" >
+<img 
+src="/static/uploads/projects/NeuralNetwork23x.svg" alt="&#x2202;L-
+&#x2202;&#x02C6;y
+" class="math-display"  /></div>
+     </dd><dt class="enumerate-enumitem">
+  2. </dt><dd 
+class="enumerate-enumitem">Activation backward <span 
+class="cmsy-10">&#x2192; </span><span 
+class="cmtt-10">Softmax.backward()</span>
+<div class="math-display" >
+<img 
+src="/static/uploads/projects/NeuralNetwork24x.svg" alt="&#x2202;L- = &#x2202;L-&#x22C5; &#x2202;&#x02C6;y
+ &#x2202;z   &#x2202;&#x02C6;y  &#x2202;z
+" class="math-display"  /></div>
+     </dd><dt class="enumerate-enumitem">
+  3. </dt><dd 
+class="enumerate-enumitem">Linear backward <span 
+class="cmsy-10">&#x2192; </span><span 
+class="cmtt-10">Linear.backward()</span>
+<div class="math-display" >
+<img 
+src="/static/uploads/projects/NeuralNetwork25x.svg" alt="&#x2202;L    &#x2202;L  &#x2202;z
+&#x2202;w-=  &#x2202;z-&#x22C5;&#x2202;w-
+" class="math-display"  /></div>
+     </dd></dl>                                                                                                  </div>
+                                                                                                       
+                                                                                                       
+<div class="minipage"><!--l. 366--><p class="noindent" ><span 
+class="cmbx-10">Linear </span>:  Abstract Python Code for Layer: </p><!--l. 368-->
+<pre class="lstlisting" id="listing-4"><span class="label"><a 
+ id="x1-2015r1"></a><span 
+class="cmr-5">1</span></span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span style="color:#0000FF"><span 
+class="cmtt-8">class</span></span><span style="color:#000000"> </span><span style="color:#000000"><span 
+class="cmtt-8">Layer</span></span><span style="color:#000000"><span 
+class="cmtt-8">:</span></span> 
+<span class="label"><a 
+ id="x1-2016r2"></a><span 
+class="cmr-5">2</span></span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span style="color:#0000FF"><span 
+class="cmtt-8">def</span></span><span style="color:#000000"> </span><span style="color:#000000"><span 
+class="cmtt-8">__init__</span></span><span style="color:#000000"><span 
+class="cmtt-8">(</span></span><span style="color:#000000"><span 
+class="cmtt-8">self</span></span><span style="color:#000000"><span 
+class="cmtt-8">)</span></span><span style="color:#000000"><span 
+class="cmtt-8">:</span></span> 
+<span class="label"><a 
+ id="x1-2017r3"></a><span 
+class="cmr-5">3</span></span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span style="color:#000000"><span 
+class="cmtt-8">self</span></span><span style="color:#000000"><span 
+class="cmtt-8">.</span></span><span style="color:#000000"><span 
+class="cmtt-8">inp</span></span><span style="color:#000000"> </span><span style="color:#000000"><span 
+class="cmtt-8">=</span></span><span style="color:#000000"> </span><span style="color:#000000"><span 
+class="cmtt-8">None</span></span> 
+<span class="label"><a 
+ id="x1-2018r4"></a><span 
+class="cmr-5">4</span></span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span style="color:#000000"><span 
+class="cmtt-8">self</span></span><span style="color:#000000"><span 
+class="cmtt-8">.</span></span><span style="color:#000000"><span 
+class="cmtt-8">out</span></span><span style="color:#000000"> </span><span style="color:#000000"><span 
+class="cmtt-8">=</span></span><span style="color:#000000"> </span><span style="color:#000000"><span 
+class="cmtt-8">None</span></span> 
+<span class="label"><a 
+ id="x1-2019r5"></a><span 
+class="cmr-5">5</span></span> 
+<span class="label"><a 
+ id="x1-2020r6"></a><span 
+class="cmr-5">6</span></span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span style="color:#0000FF"><span 
+class="cmtt-8">def</span></span><span style="color:#000000"> </span><span style="color:#000000"><span 
+class="cmtt-8">__call__</span></span><span style="color:#000000"><span 
+class="cmtt-8">(</span></span><span style="color:#000000"><span 
+class="cmtt-8">self</span></span><span style="color:#000000"><span 
+class="cmtt-8">,</span></span><span style="color:#000000"> </span><span style="color:#000000"><span 
+class="cmtt-8">inp</span></span><span style="color:#000000"><span 
+class="cmtt-8">:</span></span><span style="color:#000000"> </span><span style="color:#000000"><span 
+class="cmtt-8">np</span></span><span style="color:#000000"><span 
+class="cmtt-8">.</span></span><span style="color:#000000"><span 
+class="cmtt-8">ndarray</span></span><span style="color:#000000"><span 
+class="cmtt-8">)</span></span><span style="color:#000000"> </span><span style="color:#000000"><span 
+class="cmtt-8">-&#x003E;</span></span><span style="color:#000000"> </span><span style="color:#000000"><span 
+class="cmtt-8">np</span></span><span style="color:#000000"><span 
+class="cmtt-8">.</span></span><span style="color:#000000"><span 
+class="cmtt-8">ndarray</span></span><span style="color:#000000"><span 
+class="cmtt-8">:</span></span> 
+<span class="label"><a 
+ id="x1-2021r7"></a><span 
+class="cmr-5">7</span></span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span style="color:#0000FF"><span 
+class="cmtt-8">return</span></span><span style="color:#000000"> </span><span style="color:#000000"><span 
+class="cmtt-8">self</span></span><span style="color:#000000"><span 
+class="cmtt-8">.</span></span><span style="color:#000000"><span 
+class="cmtt-8">forward</span></span><span style="color:#000000"><span 
+class="cmtt-8">(</span></span><span style="color:#000000"><span 
+class="cmtt-8">inp</span></span><span style="color:#000000"><span 
+class="cmtt-8">)</span></span> 
+<span class="label"><a 
+ id="x1-2022r8"></a><span 
+class="cmr-5">8</span></span> 
+<span class="label"><a 
+ id="x1-2023r9"></a><span 
+class="cmr-5">9</span></span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span style="color:#0000FF"><span 
+class="cmtt-8">def</span></span><span style="color:#000000"> </span><span style="color:#000000"><span 
+class="cmtt-8">forward</span></span><span style="color:#000000"><span 
+class="cmtt-8">(</span></span><span style="color:#000000"><span 
+class="cmtt-8">self</span></span><span style="color:#000000"><span 
+class="cmtt-8">,</span></span><span style="color:#000000"> </span><span style="color:#000000"><span 
+class="cmtt-8">inp</span></span><span style="color:#000000"><span 
+class="cmtt-8">:</span></span><span style="color:#000000"> </span><span style="color:#000000"><span 
+class="cmtt-8">np</span></span><span style="color:#000000"><span 
+class="cmtt-8">.</span></span><span style="color:#000000"><span 
+class="cmtt-8">ndarray</span></span><span style="color:#000000"><span 
+class="cmtt-8">)</span></span><span style="color:#000000"> </span><span style="color:#000000"><span 
+class="cmtt-8">-&#x003E;</span></span><span style="color:#000000"> </span><span style="color:#000000"><span 
+class="cmtt-8">np</span></span><span style="color:#000000"><span 
+class="cmtt-8">.</span></span><span style="color:#000000"><span 
+class="cmtt-8">ndarray</span></span><span style="color:#000000"><span 
+class="cmtt-8">:</span></span> 
+<span class="label"><a 
+ id="x1-2024r10"></a><span 
+class="cmr-5">10</span></span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span style="color:#0000FF"><span 
+class="cmtt-8">raise</span></span><span style="color:#000000"> </span><span style="color:#000000"><span 
+class="cmtt-8">NotImplementedError</span></span> 
+<span class="label"><a 
+ id="x1-2025r11"></a><span 
+class="cmr-5">11</span></span> 
+<span class="label"><a 
+ id="x1-2026r12"></a><span 
+class="cmr-5">12</span></span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span style="color:#0000FF"><span 
+class="cmtt-8">def</span></span><span style="color:#000000"> </span><span style="color:#000000"><span 
+class="cmtt-8">backward</span></span><span style="color:#000000"><span 
+class="cmtt-8">(</span></span><span style="color:#000000"><span 
+class="cmtt-8">self</span></span><span style="color:#000000"><span 
+class="cmtt-8">,</span></span><span style="color:#000000"> </span><span style="color:#000000"><span 
+class="cmtt-8">up_grad</span></span><span style="color:#000000"><span 
+class="cmtt-8">:</span></span><span style="color:#000000"> </span><span style="color:#000000"><span 
+class="cmtt-8">np</span></span><span style="color:#000000"><span 
+class="cmtt-8">.</span></span><span style="color:#000000"><span 
+class="cmtt-8">ndarray</span></span><span style="color:#000000"><span 
+class="cmtt-8">)</span></span><span style="color:#000000"> </span><span style="color:#000000"><span 
+class="cmtt-8">-&#x003E;</span></span><span style="color:#000000"> </span><span style="color:#000000"><span 
+class="cmtt-8">np</span></span><span style="color:#000000"><span 
+class="cmtt-8">.</span></span><span style="color:#000000"><span 
+class="cmtt-8">ndarray</span></span><span style="color:#000000"><span 
+class="cmtt-8">:</span></span> 
+<span class="label"><a 
+ id="x1-2027r13"></a><span 
+class="cmr-5">13</span></span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span style="color:#0000FF"><span 
+class="cmtt-8">raise</span></span><span style="color:#000000"> </span><span style="color:#000000"><span 
+class="cmtt-8">NotImplementedError</span></span> 
+<span class="label"><a 
+ id="x1-2028r14"></a><span 
+class="cmr-5">14</span></span> 
+<span class="label"><a 
+ id="x1-2029r15"></a><span 
+class="cmr-5">15</span></span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span style="color:#0000FF"><span 
+class="cmtt-8">def</span></span><span style="color:#000000"> </span><span style="color:#000000"><span 
+class="cmtt-8">step</span></span><span style="color:#000000"><span 
+class="cmtt-8">(</span></span><span style="color:#000000"><span 
+class="cmtt-8">self</span></span><span style="color:#000000"><span 
+class="cmtt-8">,</span></span><span style="color:#000000"> </span><span style="color:#000000"><span 
+class="cmtt-8">lr</span></span><span style="color:#000000"><span 
+class="cmtt-8">:</span></span><span style="color:#000000"> </span><span style="color:#0000FF"><span 
+class="cmtt-8">float</span></span><span style="color:#000000"><span 
+class="cmtt-8">)</span></span><span style="color:#000000"> </span><span style="color:#000000"><span 
+class="cmtt-8">-&#x003E;</span></span><span style="color:#000000"> </span><span style="color:#000000"><span 
+class="cmtt-8">None</span></span><span style="color:#000000"><span 
+class="cmtt-8">:</span></span> 
+<span class="label"><a 
+ id="x1-2030r16"></a><span 
+class="cmr-5">16</span></span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span style="color:#0000FF"><span 
+class="cmtt-8">pass</span></span></pre>
+     <ul class="itemize1">
+     <li class="itemize">
+     <!--l. 388--><p class="noindent" >Input features:
+</p>
+     <table 
+class="equation"><tr><td>
+<div class="math-display" >
+<img 
+src="/static/uploads/projects/NeuralNetwork26x.svg" alt="a
+" class="math-display"  /><a 
+ id="x1-2031r3"></a></div>
+     </td><td class="equation-label">(3)</td></tr></table>
+     <!--l. 391--><p class="nopar" >
+     </p></li>
+     <li class="itemize">
+     <!--l. 393--><p class="noindent" >Features weights:
+</p>
+     <table 
+class="equation"><tr><td>
+<div class="math-display" >
+<img 
+src="/static/uploads/projects/NeuralNetwork27x.svg" alt="a
+" class="math-display"  /><a 
+ id="x1-2032r4"></a></div>
+     </td><td class="equation-label">(4)</td></tr></table>
+     <!--l. 396--><p class="nopar" >
+     </p></li>
+     <li class="itemize">
+     <!--l. 398--><p class="noindent" >Bias term:
+</p>
+     <table 
+class="equation"><tr><td>
+<div class="math-display" >
+<img 
+src="/static/uploads/projects/NeuralNetwork28x.svg" alt="a
+" class="math-display"  /><a 
+ id="x1-2033r5"></a></div>
+     </td><td class="equation-label">(5)</td></tr></table>
+     <!--l. 401--><p class="nopar" >
+     </p></li>
+     <li class="itemize">
+     <!--l. 404--><p class="noindent" >Activation function :
+</p>
+     <table 
+class="equation"><tr><td>
+<div class="math-display" >
+<img 
+src="/static/uploads/projects/NeuralNetwork29x.svg" alt="a
+" class="math-display"  /><a 
+ id="x1-2034r6"></a></div>
+     </td><td class="equation-label">(6)</td></tr></table>
+     <!--l. 407--><p class="nopar" >
+     </p></li>
+     <li class="itemize">
+     <!--l. 410--><p class="noindent" >Output of the neuron:
+</p>
+     <table 
+class="equation"><tr><td>
+<div class="math-display" >
+<img 
+src="/static/uploads/projects/NeuralNetwork30x.svg" alt="y
+" class="math-display"  /><a 
+ id="x1-2035r7"></a></div>
+     </td><td class="equation-label">(7)</td></tr></table>
+     <!--l. 413--><p class="nopar" ></p></li></ul>
+<!--l. 416-->
+<pre class="lstlisting" id="listing-5"><span class="label"><a 
+ id="x1-2036r1"></a><span 
+class="cmr-5">1</span></span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span style="color:#0000FF"><span 
+class="cmtt-8">def</span></span><span style="color:#000000"> </span><span style="color:#000000"><span 
+class="cmtt-8">greet</span></span><span style="color:#000000"><span 
+class="cmtt-8">(</span></span><span style="color:#000000"><span 
+class="cmtt-8">name</span></span><span style="color:#000000"><span 
+class="cmtt-8">)</span></span><span style="color:#000000"><span 
+class="cmtt-8">:</span></span> 
+<span class="label"><a 
+ id="x1-2037r2"></a><span 
+class="cmr-5">2</span></span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span style="color:#0000FF"><span 
+class="cmtt-8">print</span></span><span style="color:#000000"><span 
+class="cmtt-8">(</span></span><span style="color:#000000"><span 
+class="cmtt-8">f</span></span><span style="color:#FF0000"><span 
+class="cmtt-8">"</span></span><span style="color:#FF0000"><span 
+class="cmtt-8">Hello</span></span><span style="color:#FF0000"><span 
+class="cmtt-8">,</span></span><span style="color:#FF0000"> </span><span style="color:#FF0000"><span 
+class="cmtt-8">{</span></span><span style="color:#FF0000"><span 
+class="cmtt-8">name</span></span><span style="color:#FF0000"><span 
+class="cmtt-8">}!</span></span><span style="color:#FF0000"><span 
+class="cmtt-8">"</span></span><span style="color:#000000"><span 
+class="cmtt-8">)</span></span> 
+<span class="label"><a 
+ id="x1-2038r3"></a><span 
+class="cmr-5">3</span></span> 
+<span class="label"><a 
+ id="x1-2039r4"></a><span 
+class="cmr-5">4</span></span><span 
+class="cmtt-8">&#x00A0;</span><span 
+class="cmtt-8">&#x00A0;</span><span style="color:#000000"><span 
+class="cmtt-8">greet</span></span><span style="color:#000000"><span 
+class="cmtt-8">(</span></span><span style="color:#FF0000"><span 
+class="cmtt-8">"</span></span><span style="color:#FF0000"><span 
+class="cmtt-8">World</span></span><span style="color:#FF0000"><span 
+class="cmtt-8">"</span></span><span style="color:#000000"><span 
+class="cmtt-8">)</span></span></pre>                                          </div>
+<div class="minipage"><!--l. 425--><p class="noindent" ><span 
+class="cmbx-10">Squared Error(SE)</span>:  Most Common error function in linear regression is:
+</p>
+<table 
+class="equation"><tr><td>
+<div class="math-display" >
+<img 
+src="/static/uploads/projects/NeuralNetwork31x.svg" alt="       (i)     (i)   2
+SE  : (y - h(x ,w ))
+" class="math-display"  /><a 
+ id="x1-2040r8"></a></div>
+</td><td class="equation-label">(8)</td></tr></table>
+<!--l. 429--><p class="nopar" >                                                                                                       </p></div>
+<div class="minipage"><!--l. 434--><p class="noindent" ><span 
+class="cmbx-10">Sum of Squared Errors (SSE)</span>:  Cost function should measure all predictions. Thus a choice could be Sum of Squared
+Error(SE)
+</p>
+<table 
+class="equation"><tr><td>
+<div class="math-display" >
+<img 
+src="/static/uploads/projects/NeuralNetwork32x.svg" alt="      N&#x2211;
+SSE :   (y(i) - h(x(i),w))
+      i=1
+" class="math-display"  /><a 
+ id="x1-2041r9"></a></div>
+</td><td class="equation-label">(9)</td></tr></table>
+<!--l. 438--><p class="nopar" >                                                                                                       </p></div>
+                                                                                                       
+                                                                                                       
+<div class="minipage"><!--l. 441--><p class="noindent" ><span 
+class="cmbx-10">Solve it analytically for one dimension</span>:  Predicted:
+</p>
+<table 
+class="equation"><tr><td>
+<div class="math-display" >
+<img 
+src="/static/uploads/projects/NeuralNetwork33x.svg" alt="^y = w0 + w1x
+" class="math-display"  /><a 
+ id="x1-2042r10"></a></div>
+</td><td class="equation-label">(10)</td></tr></table>
+<!--l. 445--><p class="nopar" >SSE or Cost Function:
+</p>
+<table 
+class="equation"><tr><td>
+<div class="math-display" >
+<img 
+src="/static/uploads/projects/NeuralNetwork34x.svg" alt="            N              N
+J(w ,w ) := &#x2211; (y(i) - ^y(i))2 = &#x2211; (y(i) - w + w x(i))2
+   0  1    i=1             i=1        0   1
+" class="math-display"  /><a 
+ id="x1-2043r11"></a></div>
+</td><td class="equation-label">(11)</td></tr></table>
+<!--l. 449--><p class="nopar" >Assumptions:
+</p>
+<table 
+class="equation"><tr><td>
+<div class="math-display" >
+<img 
+src="/static/uploads/projects/NeuralNetwork35x.svg" alt="&#x2202;J       &#x2202;J
+&#x2202;w--= 0,&#x2202;w--= 0
+  0        1
+" class="math-display"  /><a 
+ id="x1-2044r12"></a></div>
+</td><td class="equation-label">(12)</td></tr></table>
+<!--l. 453--><p class="nopar" ><img 
+src="/static/uploads/projects/NeuralNetwork36x.svg" alt="&#x2202;&#x2202;wJ0"  class="frac" align="middle" /> = 0 : thus:
+</p>
+<table 
+class="equation"><tr><td>
+<div class="math-display" >
+<img 
+src="/static/uploads/projects/NeuralNetwork37x.svg" alt="     N
+-&#x2202;--&#x2211;    (i)          (i) 2    1
+&#x2202;w0(   (y  - (w0 + w1x )) ) = 0
+    i=1
+" class="math-display"  /><a 
+ id="x1-2045r13"></a></div>
+</td><td class="equation-label">(13)</td></tr></table>
+<!--l. 457--><p class="nopar" >
+</p>
+<table 
+class="equation"><tr><td>
+<div class="math-display" >
+<img 
+src="/static/uploads/projects/NeuralNetwork38x.svg" alt="   N
+- 2&#x2211; (y(i) - w0 - w1x(i)) = 0
+   i=1
+" class="math-display"  /><a 
+ id="x1-2046r14"></a></div>
+</td><td class="equation-label">(14)</td></tr></table>
+<!--l. 461--><p class="nopar" ><a 
+ id="x1-2047f1"></a><span class="footnote-mark"><a 
+ id="fn0x12"><a 
+ id="x1-2048x2"></a>   <sup class="textsuperscript"></sup></a></span><sup class="textsuperscript"><span 
+class="cmr-9">1</span></sup> <span 
+class="cmmi-8">fog</span><span 
+class="cmr-8">(</span><span 
+class="cmmi-8">x</span><span 
+class="cmr-8">)</span><span 
+class="cmsy-8">&#x2032; </span><span 
+class="cmr-8">= </span><span 
+class="cmmi-8">f</span><span 
+class="cmr-8">(</span><span 
+class="cmmi-8">g</span><span 
+class="cmr-8">(</span><span 
+class="cmmi-8">x</span><span 
+class="cmr-8">))</span><span 
+class="cmsy-8">&#x2032;</span><span 
+class="cmmi-8">g</span><span 
+class="cmr-8">(</span><span 
+class="cmmi-8">x</span><span 
+class="cmr-8">)</span><span 
+class="cmsy-8">&#x2032;</span>
+</p><!--l. 464--><p class="noindent" >For this equation to equal zero, the following condition must be met: </p>
+     <ul class="itemize1">
+     <li class="itemize">
+     <!--l. 466--><p class="noindent" ><span 
+class="cmex-10">&#x2211;</span>
+  <sub><span 
+class="cmmi-7">i</span><span 
+class="cmr-7">=1</span></sub><sup><span 
+class="cmmi-7">N</span></sup><span 
+class="cmmi-10">y</span><sup><span 
+class="cmr-7">(</span><span 
+class="cmmi-7">i</span><span 
+class="cmr-7">)</span></sup> = 0 := <span 
+class="cmmi-10">Y</span>
+     </p></li>
+     <li class="itemize">
+     <!--l. 467--><p class="noindent" ><span 
+class="cmex-10">&#x2211;</span>
+  <sub><span 
+class="cmmi-7">i</span><span 
+class="cmr-7">=1</span></sub><sup><span 
+class="cmmi-7">N</span></sup> <span 
+class="cmsy-10">- </span><span 
+class="cmmi-10">w</span><sub><span 
+class="cmr-7">0</span></sub> = 0 := <span 
+class="cmmi-10">nw</span><sub><span 
+class="cmr-7">0</span></sub>
+     </p></li>
+     <li class="itemize">
+     <!--l. 468--><p class="noindent" ><span 
+class="cmex-10">&#x2211;</span>
+  <sub><span 
+class="cmmi-7">i</span><span 
+class="cmr-7">=1</span></sub><sup><span 
+class="cmmi-7">N</span></sup> <span 
+class="cmsy-10">- </span><span 
+class="cmmi-10">w</span><sub><span 
+class="cmr-7">1</span></sub><span 
+class="cmmi-10">x</span><sup><span 
+class="cmr-7">(</span><span 
+class="cmmi-7">i</span><span 
+class="cmr-7">)</span></sup> = 0 := <span 
+class="cmmi-10">X</span></p></li></ul>
+<!--l. 470--><p class="noindent" >Thus:
+</p>
+<table 
+class="equation"><tr><td>
+<div class="math-display" >
+<img 
+src="/static/uploads/projects/NeuralNetwork39x.svg" alt="                 (i)         (Y---w1x(i))-
+0 = Y - nw0 - w1x  -&#x2192;  w0 =     n
+" class="math-display"  /><a 
+ id="x1-2049r15"></a></div>
+</td><td class="equation-label">(15)</td></tr></table>
+<!--l. 473--><p class="nopar" >                                                                                                       </p></div>
+                                                                                                       
+                                                                                                       
+<a 
+ id="likesection.1"></a><a 
+ id="x1-2050x2"></a>
+</div>
+                                                                                                       
+                                                                                                       
+ 
+</body></html> 
+
+                                                                                                       
+
+
