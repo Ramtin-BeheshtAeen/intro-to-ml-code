@@ -12,6 +12,9 @@
 \usepackage{listings}
 \lstset{
   language=Python,
+  breaklines=true,      % allow line breaking
+  postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}, % mark wrapped lines
+  columns=flexible,      % ← important: keeps syntax highlighting + page breaks
   basicstyle=\ttfamily\footnotesize,
   keywordstyle=\color{blue},
   stringstyle=\color{red},
@@ -25,6 +28,7 @@
   extendedchars=true,
   literate={∂}{{\ensuremath{\partial}}}1 {…}{{\ldots}}1
 }
+
 
 \usepackage{multicol}
 \usepackage[compact]{titlesec}
@@ -126,7 +130,7 @@
 
 \newenvironment{cheatformula}[1][כותרת]{
     \begin{minipage}{\linewidth}
-    \textbf{#1}:
+    \textbf{#1}: \\
 }{
     % changing vertical  space between every cheat formula
     \end{minipage}\\[0ex]
@@ -151,8 +155,9 @@
 
 \begin{document}
 
-\setlength{\columnsep}{1cm}
-\setlength{\columnseprule}{1pt}
+no column mode
+% \setlength{\columnsep}{1cm}
+% \setlength{\columnseprule}{1pt}
 
 \makeatletter
 \begin{center}
@@ -161,8 +166,9 @@
 \end{center}
 \makeatother
 
-\begin{multicols*}{2}
-\raggedcolumns
+% no column mode
+% \begin{multicols*}{2}
+% \raggedcolumns
 
 
 \section{Neural Network Theory}
@@ -175,15 +181,22 @@
   ]
     \node[main] (z) {$z$};
     \node (x) [left=of z, xshift=-0.3cm] {$x$};          % move x more to the left
+    \node (w) [right=of x, xshift=-0.7cm] {$w$};
     \node (b) [above=of x, yshift=3mm] {$b$};            % lift b up a bit from x
     \node[main] (A) [right=of z, xshift=-0.5cm] {$A$};      % A right of z, no extra shift
     \node (y_hat) [right=of A] {$\hat{y} \,\mathrm{(Predicted)} \mid y\, \mathrm{(real\ values)}$};
     \node[below=of y_hat] {$L(\hat{y}, y)$};
-  
-    \draw[->] (x) -- (z);
+    
+    \draw[->] (x) -- (w);
+    \draw[->] (w) -- (z);
     \draw[->] (b) -- (z);
     \draw[->] (z) -- (A);
     \draw[->] (A) -- (y_hat);
+
+    \draw[->,red] (x) to[bend left=-20] node[midway, below] { \color{red} \tiny Linear Class} (z);
+    \draw[->,red] (z) to[bend left=20] node[midway, above] { \color{red} \tiny ReLU} (A);
+
+
   \end{tikzpicture}
   
 \end{cheatformula}
@@ -363,7 +376,7 @@ The derivatives $\frac{\partial L}{\partial \hat{y}}$, $\frac{\partial \hat{y}}{
   
 
 
-\begin{cheatformula}[Linear ]
+\begin{cheatformula}[Linear]
 Abstract Python Code for Layer:
 \begin{lstlisting}
   class Layer:
@@ -412,74 +425,143 @@ a
   y
   \end{equation}
 \end{itemize}
+\end{cheatformula}
 
+
+\begin{cheatformula}[explaining Forward in Linear and ReLU]
+in Linear and forward class we have:
 \begin{lstlisting}
-  def greet(name):
-      print(f"Hello, {name}!")
-  
-  greet("World")
-  \end{lstlisting}
+class Linear(Layer):
+    ...
+    def forward(self, inp: np.ndarray) -> np.ndarray:
+        """Perform the linear transformation: output = inp * W + b"""
+        self.inp = inp
+        self.out = np.dot(inp, self.w) + self.b
+        return self.out
+  ...
+\end{lstlisting}
+and in ReLU we have:
+\begin{lstlisting}
+  class ReLU(Layer):
+    def forward(self, inp: np.ndarray) -> np.ndarray:
+        """ReLU Activation function: f(x) = max(0, x)"""
+        self.inp = inp
+        self.out = np.maximum(0, inp)
+        return self.out
+    
+    def backward(self, up_grad: np.ndarray) -> np.ndarray:
+        """Backward pass for ReLU: derivative is 1 where input > 0, else 0."""
+        down_grad = up_grad * (self.inp > 0)  # Efficient boolean indexing
+        return down_grad
 
+\end{lstlisting}
+then we make a list of layers like this:
+\begin{lstlisting}
+layers = [
+    Linear(input_size, hidden_size),
+    ReLU(),
+    Linear(hidden_size, output_size)
+]
+#passing layers to MLP Class:
+model = MLP(layers, CrossEntropy(), learning_rate=0.001) 
+\end{lstlisting}
+and this list of layers will be called in the MLP class as following:
+\begin{lstlisting}
+  class MLP:
+    def __init__(self, layers: list[Layer], loss_func: Loss, learning_rate: float) -> None:
+        self.layers        = layers
+        self.loss_func     = loss_func
+        self.learning_rate = learning_rate
+    
+    def __call__(self, input: np.ndarray) -> np.ndarray:
+        return self.forward(input)
+    
+    def forward(self, input: np.ndarray) -> np.ndarray:
+        """ pass input through each layer sequentially """
+        for layer in self.layers:
+            input = layer.forward(input)
+        return input
+\end{lstlisting}
+so the list of layers will be called one by one and the output of each layer will be feed to
+the next layer as input. the next simple example will show how it works:
 \end{cheatformula}
 
-\begin{cheatformula}[Squared Error(SE)] 
-Most Common error function in linear regression is:
-\begin{equation}
-SE: ( y^{(i)} - h(x^{(i)}, w))^{2}
-\end{equation}
+\begin{cheatformula}[simple example of forward pass]
+\begin{lstlisting}
+import numpy as np
+# Input (batch of 2 samples, each with 3 features)
+X = np.array([[1, 2, 3],
+              [4, 5, 6]])
+
+# Linear layer
+class Linear:
+    def __init__(self, in_features, out_features):
+        self.W = np.ones((in_features, out_features))  # just ones for simplicity
+        self.b = np.zeros((1, out_features))
+    
+    def forward(self, x):
+        z = x @ self.W + self.b
+        print("Linear output z =", z)
+        return z
+
+# ReLU layer
+class ReLU:
+    def forward(self, x):
+        a = np.maximum(0, x)
+        print("ReLU output a =", a)
+        return a
+
+# --- Build network ---
+layers = [Linear(3, 2), ReLU()]
+
+# --- Forward pass ---
+out = X
+for layer in layers:
+    print(out)
+    out = layer.forward(out)
+    print("After layer forward, out =", out)
+
+print("Final output =", out)
+\end{lstlisting}
+First $X$ is set to $\begin{bmatrix}1 & 2 & 3 \\ 4 & 5 & 6\end{bmatrix}$, 
+$W$ is set to ones, and $b$ is set to zeros.
+
+\begin{enumerate}
+  \item In \texttt{out = layer.forward(out)} the first layer is Linear, and 
+  \texttt{out} is equal to $X$. The matrix $X$ will be fed into the Linear 
+  \texttt{forward} function.
+
+  \item In the Linear \texttt{forward} function: the output $z$ will be 
+  calculated as: 
+  \[
+    z[0] = [1+2+3, \; 1+2+3] = [6, 6], \quad
+    z[1] = [4+5+6, \; 4+5+6] = [15, 15]
+  \]
+
+  \item In this step, \texttt{out} will be equal to the output of 
+  \texttt{layer.forward(out)}, which is $z$.
+
+  \item Now in the next step of the loop, $z$ will be fed to the ReLU 
+  \texttt{forward} function, which is 
+  \[
+    a = \max(0, x)
+  \]
+  and it will be equal to 
+  \[
+    \begin{bmatrix} 6 & 6 \\ 15 & 15 \end{bmatrix}
+  \]
+
+  \item Then the result will be printed as: 
+  \[
+    \texttt{Final output = [[6. 6.] [15. 15.]]}
+  \]
+\end{enumerate}
 \end{cheatformula}
 
+% no column mode
+% \end{multicols*}
 
 
-\begin{cheatformula}[Sum of Squared Errors (SSE)]
-Cost function should measure all predictions. Thus a choice could be Sum of Squared Error(SE)
-\begin{equation}
-SSE: \sum_{i=1}^{N}(y^{(i)} - h(x^{(i)}, w) )
-\end{equation}
-\end{cheatformula}
-
-\begin{cheatformula}[Solve it analytically for one dimension]
-Predicted:
-\begin{equation}
-\widehat{y} = w_{0} + w_{1}x
-\end{equation}
-SSE or Cost Function:
-\begin{equation}
-J(w_{0}, w_{1}) := \sum_{i=1}^{N}(y^{(i)} - \widehat{y}^{(i)})^{2} = \sum_{i=1}^{N}(y^{(i)} -  w_{0} + w_{1}x^{(i)})^{2}
-\end{equation}
-Assumptions:
-\begin{equation}
-\frac{\partial J}{\partial w_{0}} = 0 \,, \frac{\partial J}{\partial w_{1}} = 0
-\end{equation}
-$\frac{\partial J}{\partial w_{0}} = 0:$ thus:
-\begin{equation}
-\frac{\partial }{\partial w_{0}}  ( \sum_{i=1}^{N}(y^{(i)} -  (w_{0} + w_{1}x^{(i)}))^{2}) = 0  \, \footnotemark
-\end{equation}
-
-\begin{equation}
--2 \sum_{i=1}^{N}(y^{(i)} -  w_{0} - w_{1}x^{(i)}) = 0
-\end{equation}
-\footnotetext{\textsuperscript{\thefootnote} $fog(x)' = f(g(x))' g(x)'$}
-
-For this equation to equal zero, the following condition must be met:
-\begin{itemize}
-\item[$\circ$] $\sum_{i=1}^{N}y^{(i)} = 0 := Y$ 
-\item[$\circ$] $\sum_{i=1}^{N}-w_{0}  = 0 := n w_{0} $ 
-\item[$\circ$] $\sum_{i=1}^{N}-w_{1}x^{(i)}  = 0 := X $ 
-\end{itemize}
-Thus:
-\begin{equation}
-0 = Y - n w_{0} -w_{1}x^{(i)} \longrightarrow  w_{0} = \frac{(Y -w_{1}x^{(i)})}{n}
-\end{equation}
-\end{cheatformula}
-
-
-\pagebreak
-
-
-
-
-\end{multicols*}
 \newpage
 
 \end{document}
