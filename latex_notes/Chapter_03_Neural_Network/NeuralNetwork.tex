@@ -428,6 +428,28 @@ a
 \end{cheatformula}
 
 
+\begin{cheatformula}[Loss Functions]
+types of loss functions:
+\begin{itemize}
+  \item[$\circ$] Mean Squared Error (MSE) for regression tasks:
+  \begin{equation}
+    L(y, \hat{y}) = \frac{1}{N} \sum_{i=1}^{N} (y_i - \hat{y}_i)^2
+  \end{equation}
+
+  \item[$\circ$] Mean Absolute Error (MAE):
+  \begin{equation}
+    L(y, \hat{y}) = \frac{1}{N} \sum_{i=1}^{N} |y_i - \hat{y}_i|
+  \end{equation}
+
+  \item[$\circ$] Cross-Entropy Loss for classification tasks:
+  \begin{equation}
+    L(y, \hat{y}) = -\sum_{i=1}^{C} y_i \log(\hat{y}_i)
+  \end{equation}  
+  
+  \end{itemize}
+\end{cheatformula}
+
+
 \begin{cheatformula}[explaining Forward in Linear and ReLU]
 in Linear and forward class we have:
 \begin{lstlisting}
